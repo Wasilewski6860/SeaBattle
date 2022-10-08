@@ -20,22 +20,27 @@ public class HumanPlayer extends Player{
 
         System.out.println("Place "+type );
         while (iteration < count) {
-            System.out.println(" x =");
-            int x = in.nextInt();
-            System.out.println(" y =");
-            int y = in.nextInt();
+            System.out.println("Enter direction:");
+            String strDirection = in.nextLine();
+            System.out.println("Your dir is " + strDirection);
 
-            Ship.DIRECTION dir = switch (in.nextLine()) {
+            System.out.println("Enter coordinates x,y:");
+            int x = in.nextInt();
+            int y = in.nextInt();
+            System.out.println(type + " coordinates is " + x + " " + y);
+
+
+            Ship.DIRECTION dir = switch (strDirection) {
                 case "left" -> Ship.DIRECTION.LEFT;
                 case "top" -> Ship.DIRECTION.TOP;
                 case "bottom" -> Ship.DIRECTION.BOTTOM;
-                case "right" -> Ship.DIRECTION.RIGHT;
-                default -> Ship.DIRECTION.BOTTOM;
+                default -> Ship.DIRECTION.RIGHT;
             };
 
             System.out.println("Selected dir is"+dir);
             if (placeShip(x,y,type,dir)) iteration++;
         }
+
     }
 
 
