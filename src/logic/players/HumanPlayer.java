@@ -16,10 +16,11 @@ public class HumanPlayer extends Player{
     @Override
     public  void placeShip(Ship.TYPE_OF_SHIP type, int count) {
         int iteration = 0;
-        Scanner in = new Scanner(System.in);
+
 
         System.out.println("Place "+type );
         while (iteration < count) {
+            Scanner in = new Scanner(System.in);
             System.out.println("Enter direction:");
             String strDirection = in.nextLine();
             System.out.println("Your dir is " + strDirection);

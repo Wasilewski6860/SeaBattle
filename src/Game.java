@@ -14,9 +14,6 @@ public class Game {
     protected static Battlefield playerBattlefield;
     protected static Battlefield enemyBattlefield;
 
-
-    protected static AI idiot;
-
     static Player[] players;
 
     protected static void initialize() {
@@ -149,7 +146,7 @@ public class Game {
         }
         printScreen();
         for (Player player : players){
-           while (player.shoot()) player.shoot();
+           while (player.shoot()) System.out.println();
            printScreen();
         }
 //        Scanner in = new Scanner(System.in);
