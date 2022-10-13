@@ -17,7 +17,7 @@ public class Cell  {
 
     private Ship ship;
 
-    private final int x, y;
+    private final int x,y;
     private typeOfCell type;
 
     public Cell(int x, int y) {
@@ -26,7 +26,6 @@ public class Cell  {
         type = typeOfCell.FREE;
         ship = null;
     }
-
 
     //Return true when cell is ship
     //Another variant is to return true

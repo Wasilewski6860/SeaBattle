@@ -9,7 +9,7 @@ import logic.ship.ShipConstants.DIRECTION;
 public class Cruiser extends Ship {
 
 
-    public Cruiser(DIRECTION dir, Cell startCell, Battlefield battlefield) {
-        super(dir, startCell, battlefield, ShipConstants.CRUISER_LENGTH);
+    public Cruiser(LocationParams location, Battlefield battlefield) {
+        super(location, battlefield, ShipConstants.CRUISER_LENGTH);
     }
 }

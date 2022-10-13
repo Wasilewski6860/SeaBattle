@@ -1,15 +1,15 @@
 package console;
 
-import logic.players.HumanPlayer;
+import logic.Coordinate;
 import logic.players.Player;
+import logic.ship.Ship;
 import logic.ship.ShipConstants;
-import logic.ship.ShipParams;
 
 import java.util.Scanner;
 
 public class ConsoleScanner {
 
-    public static ShipParams readShipParams(Player humanPlayer, ShipConstants.TYPE_OF_SHIP type) {
+    public static Ship.LocationParams readShipParams(Player humanPlayer) {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter direction:");
         String strDirection = in.nextLine();
@@ -20,7 +20,6 @@ public class ConsoleScanner {
         int y = in.nextInt();
         System.out.println(" Coordinates is " + x + " " + y);
 
-
         ShipConstants.DIRECTION dir = switch (strDirection) {
             case "left" -> ShipConstants.DIRECTION.LEFT;
             case "top" -> ShipConstants.DIRECTION.TOP;
@@ -28,6 +27,15 @@ public class ConsoleScanner {
             default -> ShipConstants.DIRECTION.RIGHT;
         };
 
-        return new ShipParams( dir, humanPlayer.getPlayerBattlefield().getCell(x,y) ,type );
+        return new Ship.LocationParams(dir, humanPlayer.getPlayerBattlefield().getCell(x, y));
+    }
+
+    public static Coordinate readShotParams(Player humanPlayer) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter x,y coordinates of your shot: ");
+        int x = in.nextInt();
+        int y = in.nextInt();
+
+        return new Coordinate(x, y);
     }
 }

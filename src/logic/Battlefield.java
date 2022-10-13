@@ -34,7 +34,7 @@ public class Battlefield {
 
         this.table = new Cell[TABLE_HEIGHT][TABLE_WIDTH];
         this.borderPlacer = new BorderPlacer(this);
-        this.shipChecker = new ShipChecker(this);
+        this.shipChecker = new ShipChecker();
 
         for (int i = 0; i < table.length; i++)
             for (int j = 0; j < table[i].length; j++)
@@ -43,18 +43,11 @@ public class Battlefield {
         this.ships = new ArrayList<>();
     }
 
-    public boolean placeShip( TYPE_OF_SHIP type, DIRECTION dir, final Cell startCell) {
+    public boolean placeShip(int length, Ship.LocationParams location) {
 
 
-        if (shipChecker.check(type, dir, startCell)) {
-            Ship ship;
-            switch (type){
-                case BATTLESHIP -> ship = new Battleship(dir,startCell,this);
-                case DESTROYER -> ship = new Cruiser(dir,startCell,this);
-                case CRUISER -> ship = new Destroyer(dir,startCell,this);
-                case TORPEDO_BOAT -> ship = new TorpedoBoat(dir,startCell,this);
-                default -> ship = new TorpedoBoat(ShipConstants.DIRECTION.TOP,startCell,this);
-            }
+        if (shipChecker.check(location,length,this)) {
+            Ship ship = new Ship(location,this,length);
             ships.add(ship);
             borderPlacer.setBorders(ship);
             return true;

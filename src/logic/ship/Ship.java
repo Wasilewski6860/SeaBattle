@@ -5,19 +5,19 @@ import logic.Cell;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import logic.ship.ShipConstants.DIRECTION;
 
-public abstract class Ship {
+public class Ship {
 
-    public class LocationParams{
+    public static class LocationParams {
         ShipConstants.DIRECTION dir;
         Cell startCell;
-        ShipConstants.TYPE_OF_SHIP type;
 
-        public LocationParams(ShipConstants.DIRECTION dir, Cell startCell, ShipConstants.TYPE_OF_SHIP type) {
+
+        public LocationParams(ShipConstants.DIRECTION dir, Cell startCell) {
             this.dir = dir;
             this.startCell = startCell;
-            this.type = type;
         }
 
         public ShipConstants.DIRECTION getDir() {
@@ -27,74 +27,69 @@ public abstract class Ship {
         public Cell getStartCell() {
             return startCell;
         }
-
-        public ShipConstants.TYPE_OF_SHIP getType() {
-            return type;
-        }
     }
+
     private Cell[] shipBody;//
     private List<Cell> borders;
     private Battlefield shipBattlefield;//
     private int hp;//
     private final int length;//
-    private final Cell startCell;//
-    private DIRECTION direction;//
+    private LocationParams location;
 
-    public Ship(DIRECTION dir, Cell startCell, Battlefield battlefield, int length) {
+    public Ship(LocationParams location, Battlefield battlefield, int length) {
 
         this.length = length;
         shipBody = new Cell[length];
-        hp=length;
-        this.startCell = startCell;
-        this.shipBattlefield = battlefield;
-        this.direction = dir;
+        hp = length;
+        shipBattlefield = battlefield;
 
-        Cell[][] cellTable = this.shipBattlefield.getTable();
+        Cell[][] cellTable = shipBattlefield.getTable();
 
-        switch (dir) {
+        int startPosY = location.getStartCell().getY();
+        int startPosX = location.getStartCell().getX();
+        switch (location.getDir()) {
             case TOP -> {
                 int j = 0;
-                for (int i = startCell.getY(); i > startCell.getY() - length; i--) {
-                    cellTable[i][startCell.getX()].setType(Cell.typeOfCell.SHIP);
-                    cellTable[i][startCell.getX()].setShip(this);
-                    shipBody[j] = cellTable[i][startCell.getX()];
+                for (int i = startPosY; i > startPosY - length; i--) {
+                    cellTable[i][startPosX].setType(Cell.typeOfCell.SHIP);
+                    cellTable[i][startPosX].setShip(this);
+                    shipBody[j] = cellTable[i][startPosX];
                     j++;
                 }
             }
             case RIGHT -> {
                 int j = 0;
-                for (int i = startCell.getX(); i < startCell.getX() + length; i++) {
-                    cellTable[startCell.getY()][i].setType(Cell.typeOfCell.SHIP);
-                    shipBody[j] = cellTable[startCell.getY()][i];
-                    cellTable[startCell.getY()][i].setShip(this);
+                for (int i = startPosX; i < startPosX + length; i++) {
+                    cellTable[startPosY][i].setType(Cell.typeOfCell.SHIP);
+                    shipBody[j] = cellTable[startPosY][i];
+                    cellTable[startPosY][i].setShip(this);
                     j++;
                 }
             }
             case LEFT -> {
                 int j = 0;
-                for (int i = startCell.getX(); i > startCell.getX() - length; i--) {
-                    cellTable[startCell.getY()][i].setType(Cell.typeOfCell.SHIP);
-                    shipBody[j] = cellTable[startCell.getY()][i];
-                    cellTable[startCell.getY()][i].setShip(this);
+                for (int i = startPosX; i > startPosX - length; i--) {
+                    cellTable[startPosY][i].setType(Cell.typeOfCell.SHIP);
+                    shipBody[j] = cellTable[startPosY][i];
+                    cellTable[startPosY][i].setShip(this);
                     j++;
                 }
             }
             case BOTTOM -> {
                 int j = 0;
-                for (int i = startCell.getY(); i < startCell.getY() + length; i++) {
-                    cellTable[i][startCell.getX()].setType(Cell.typeOfCell.SHIP);
-                    shipBody[j] = cellTable[i][startCell.getX()];
-                    cellTable[i][startCell.getX()].setShip(this);
+                for (int i = startPosY; i < startPosY + length; i++) {
+                    cellTable[i][startPosX].setType(Cell.typeOfCell.SHIP);
+                    shipBody[j] = cellTable[i][startPosX];
+                    cellTable[i][startPosX].setShip(this);
                     j++;
                 }
             }
         }
         this.shipBattlefield.setTable(cellTable);
     }
-    public int  getWound(Cell cell) {
-        if (cell.blast()) {
-            if (hp > 0) hp--;
-        }
+
+    public int getWound(Cell cell) {
+        if (cell.blast()) if (hp > 0) hp--;
         return hp;
     }
 

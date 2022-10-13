@@ -9,7 +9,7 @@ import logic.ship.ShipConstants.DIRECTION;
 public class Destroyer extends Ship {
 
 
-    public Destroyer(DIRECTION dir, Cell startCell, Battlefield battlefield) {
-        super(dir, startCell, battlefield, ShipConstants.DESTROYER_LENGTH);
+    public Destroyer(LocationParams location, Battlefield battlefield) {
+        super(location, battlefield, ShipConstants.DESTROYER_LENGTH);
     }
 }

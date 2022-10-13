@@ -8,9 +8,9 @@ import logic.players.Player;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
-import logic.ship.ShipConstants.TYPE_OF_SHIP;
+
+import logic.ship.Ship;
 import logic.ship.ShipConstants.DIRECTION;
-import logic.ship.ShipParams;
 
 public abstract class AIPlayer extends Player {
 
@@ -29,7 +29,7 @@ public abstract class AIPlayer extends Player {
     }
 
     @Override
-    public  void placeShip(TYPE_OF_SHIP type, int count) {
+    public  void placeShip(int length, int count) {
         int iteration = 0;
         Random rnd = new Random();
 
@@ -44,7 +44,7 @@ public abstract class AIPlayer extends Player {
             else if (dirIntRnd == 2) dir = DIRECTION.RIGHT;
             else if (dirIntRnd == 3) dir = DIRECTION.LEFT;
 
-            if (placeShip(new ShipParams(dir,playerBattlefield.getCell(x,y),type))) iteration++;
+            if (placeShip(new Ship.LocationParams(dir,getPlayerBattlefield().getCell(x,y)),length)) iteration++;
         }
     }
     protected boolean randomShoot() {

@@ -11,8 +11,9 @@ import logic.ship.ShipConstants.*;
 public class Battleship extends Ship {
 
 
-    public Battleship(DIRECTION dir, Cell startCell, Battlefield battlefield) {
-        super(dir, startCell, battlefield, ShipConstants.BATTLESHIP_LENGTH);
+    public Battleship(LocationParams location, Battlefield battlefield) {
+        super(location, battlefield, ShipConstants.BATTLESHIP_LENGTH);
     }
+
 
 }

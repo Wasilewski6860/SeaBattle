@@ -3,12 +3,10 @@ package logic.players;
 import console.ConsoleScanner;
 import logic.Battlefield;
 
-import java.util.Scanner;
+import logic.Coordinate;
+import logic.ship.ShipChecker;
 
-import logic.ship.ShipConstants.TYPE_OF_SHIP;
-import logic.ship.ShipConstants.DIRECTION;
-
-public class HumanPlayer extends Player{
+public class HumanPlayer extends Player {
 
     public HumanPlayer(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
         super(playerBattlefield, enemyBattlefield);
@@ -16,25 +14,26 @@ public class HumanPlayer extends Player{
 
 
     @Override
-    public  void placeShip(TYPE_OF_SHIP type, int count) {
+    public void placeShip(int length, int count) {
         int iteration = 0;
 
-        System.out.println("Place "+type );
+        System.out.println("Place " + length + "-deck ship ");
         while (iteration < count) {
-            if (placeShip(ConsoleScanner.readShipParams(this,type))) iteration++;
+            /**
+             * Что правильней?
+             * if (new ShipChecker().check(ConsoleScanner.readShipParams(this), length,getPlayerBattlefield()))iteration++;
+             * Или
+             */
+            if (placeShip(ConsoleScanner.readShipParams(this), length)) iteration++;
         }
 
     }
 
 
     @Override
-    public  boolean shoot() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter x,y coordinates of your shot: ");
-        int x = in.nextInt();
-        int y = in.nextInt();
-
-        return enemyBattlefield.getShot(enemyBattlefield.getCell(x, y));
+    public boolean shoot() {
+        Coordinate coordinateOfShot = ConsoleScanner.readShotParams(this);
+        return enemyBattlefield.getShot(enemyBattlefield.getCell(coordinateOfShot.x(), coordinateOfShot.y()));
 
     }
 }

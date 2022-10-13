@@ -9,7 +9,7 @@ import logic.ship.ShipConstants.DIRECTION;
 public class TorpedoBoat extends Ship {
 
 
-    public TorpedoBoat(DIRECTION dir, Cell startCell, Battlefield battlefield) {
-        super(dir, startCell, battlefield, ShipConstants.TORPEDO_BOAT_LENGTH);
+    public TorpedoBoat(LocationParams location, Battlefield battlefield) {
+        super(location, battlefield, ShipConstants.TORPEDO_BOAT_LENGTH);
     }
 }

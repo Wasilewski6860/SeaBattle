@@ -7,31 +7,26 @@ import logic.ship.ShipConstants.TYPE_OF_SHIP;
 
 public class ShipChecker {
 
-    private Battlefield battlefield;
+    //private Battlefield battlefield;
 
-    public ShipChecker(Battlefield battlefield) {
-        this.battlefield = battlefield;
-    }
+   // public ShipChecker(Battlefield battlefield) {
+   //     this.battlefield = battlefield;
+   // }
 
-    public boolean check(TYPE_OF_SHIP type, DIRECTION dir, Cell startCell) {
+    public  boolean check(Ship.LocationParams location, int length, Battlefield battlefield) {
 
-        int length = 0;
-        switch (type) {
-            case BATTLESHIP -> length = 4;
-            case CRUISER -> length = 3;
-            case DESTROYER -> length = 2;
-            case TORPEDO_BOAT -> length = 1;
-        }
-        if (checkForAccommodation(battlefield, length, dir, startCell)) if (checkForCollisions(battlefield, dir, startCell, length))  return true;
+        if (checkForAccommodation( length,location)) if (checkForCollisions(battlefield, location, length))  return true;
 
         return false;
     }
 
-    private static boolean checkForAccommodation(Battlefield battlefield, int length, DIRECTION dir, Cell startCell) {
-        switch (dir) {
+    private static boolean checkForAccommodation( int length, Ship.LocationParams location) {
+        int startPosY = location.getStartCell().getY();
+        int startPosX = location.getStartCell().getX();
+        switch (location.getDir()) {
             case TOP -> {
                 // int j = 0;
-                for (int i = startCell.getY(); i > startCell.getY() - length; i--) {
+                for (int i = startPosY; i > startPosY - length; i--) {
                     // System.out.println("i "+i+" ");
                     if (i < 0) return false;
                     //   j++;
@@ -39,21 +34,21 @@ public class ShipChecker {
             }
             case RIGHT -> {
                 //   int j = 0;
-                for (int i = startCell.getX(); i < startCell.getX() + length; i++) {
+                for (int i = startPosX; i < startPosX + length; i++) {
                     if (i >= 10) return false;
                     //     j++;
                 }
             }
             case LEFT -> {
                 //   int j = 0;
-                for (int i = startCell.getX(); i > startCell.getX() - length; i--) {
+                for (int i = startPosX; i > startPosX - length; i--) {
                     if (i < 0) return false;
                     //     j++;
                 }
             }
             case BOTTOM -> {
                 // int j = 0;
-                for (int i = startCell.getY(); i < startCell.getY() + length; i++) {
+                for (int i = startPosY; i < startPosY + length; i++) {
                     if (i >= 10) return false;
                     //    j++;
                 }
@@ -62,39 +57,41 @@ public class ShipChecker {
         return true;
     }
 
-    private static boolean checkForCollisions(Battlefield battlefield,  DIRECTION dir, Cell startCell, int length) {
+    private static boolean checkForCollisions(Battlefield battlefield,  Ship.LocationParams location, int length) {
         //check for free of neighbour cells
         Cell[][] cellTable = battlefield.getTable();
-        switch (dir) {
+        int startPosY = location.getStartCell().getY();
+        int startPosX = location.getStartCell().getX();
+        switch (location.getDir()) {
             case TOP -> {
-                for (int i = startCell.getY(); i > startCell.getY() - length; i--) {
-                    if (cellTable[i][startCell.getX()].getType() != Cell.typeOfCell.FREE) {
+                for (int i = startPosY; i > startPosY - length; i--) {
+                    if (cellTable[i][startPosX].getType() != Cell.typeOfCell.FREE) {
                         return false;
                     }
-                    //  return   cellTable[i][startCell.getX()].getType() != Cell.typeOfCell.free;
+                    //  return   cellTable[i][startPosX].getType() != Cell.typeOfCell.free;
                 }
             }
             case RIGHT -> {
-                for (int i = startCell.getX(); i < startCell.getX() + length; i++) {
-                    if (cellTable[startCell.getY()][i].getType() != Cell.typeOfCell.FREE) {
+                for (int i = startPosX; i < startPosX + length; i++) {
+                    if (cellTable[startPosY][i].getType() != Cell.typeOfCell.FREE) {
                         return false;
                     }
-                    //    return   cellTable[startCell.getY()][i].getType() != Cell.typeOfCell.free;
+                    //    return   cellTable[startPosY][i].getType() != Cell.typeOfCell.free;
                 }
             }
             case LEFT -> {
-                for (int i = startCell.getX(); i > startCell.getX() - length; i--) {
-                    if (cellTable[startCell.getY()][i].getType() != Cell.typeOfCell.FREE) {
+                for (int i = startPosX; i > startPosX - length; i--) {
+                    if (cellTable[startPosY][i].getType() != Cell.typeOfCell.FREE) {
                         // System.out.println("Collision!");
                         return false;
                     }
-                    // return   cellTable[startCell.getY()][i].getType() != Cell.typeOfCell.free;
+                    // return   cellTable[startPosY][i].getType() != Cell.typeOfCell.free;
                 }
             }
             case BOTTOM -> {
-                for (int i = startCell.getY(); i < startCell.getY() + length; i++) {
+                for (int i = startPosY; i < startPosY + length; i++) {
 
-                    if (cellTable[i][startCell.getX()].getType() != Cell.typeOfCell.FREE) {
+                    if (cellTable[i][startPosX].getType() != Cell.typeOfCell.FREE) {
                         //   System.out.println("Collision!");
                         return false;
                     }
