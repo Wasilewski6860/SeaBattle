@@ -13,4 +13,16 @@ public class ShipParams {
         this.startCell = startCell;
         this.type = type;
     }
+
+    public ShipConstants.DIRECTION getDir() {
+        return dir;
+    }
+
+    public Cell getStartCell() {
+        return startCell;
+    }
+
+    public ShipConstants.TYPE_OF_SHIP getType() {
+        return type;
+    }
 }

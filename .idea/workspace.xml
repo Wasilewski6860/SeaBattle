@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Working players and the beginning of graphics">
-      <change afterPath="$PROJECT_DIR$/src/console/ConsolePrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/console/ConsoleScanner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ship/ShipConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ship/ShipParams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/Battleship.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/Cruiser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/Destroyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/TorpedoBoat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/console/ConsoleScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/console/ConsoleScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Battlefield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Battlefield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/BorderPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/BorderPlacer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Ship.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ShipChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ship/ShipChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/BorderPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ship/BorderPlacer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/players/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/HumanPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/players/ai/AIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/ai/AIPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ship/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ship/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ship/ShipParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ship/ShipParams.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="tb" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,9 +35,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Battlefield.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/logic/BorderPlacer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Cell.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Game.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/logic/ship/BorderPlacer.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -93,7 +80,7 @@
       <workItem from="1665340217814" duration="88000" />
       <workItem from="1665591586767" duration="1964000" />
       <workItem from="1665668600257" duration="6940000" />
-      <workItem from="1665675556283" duration="4620000" />
+      <workItem from="1665675556283" duration="8449000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -123,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665669059796</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Working players and the beginning of graphics">
+      <created>1665680568495</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665680568495</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,15 +142,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/logic/players/ai/NormalAI.java</url>
-          <line>12</line>
-          <properties class="logic.players.ai.NormalAI" method="shoot">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/logic/ship/ships/Battleship.java</url>
           <line>13</line>

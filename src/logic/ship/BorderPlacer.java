@@ -1,7 +1,10 @@
-package logic;
+package logic.ship;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import logic.Battlefield;
+import logic.Cell;
 import logic.ship.Ship;
 
 public class BorderPlacer {

@@ -5,6 +5,8 @@ import java.util.List;
 
 import static logic.ship.ShipConstants.TYPE_OF_SHIP;
 import static logic.ship.ShipConstants.DIRECTION;
+
+import logic.ship.BorderPlacer;
 import logic.ship.Ship;
 import logic.ship.ShipChecker;
 import logic.ship.ShipConstants;

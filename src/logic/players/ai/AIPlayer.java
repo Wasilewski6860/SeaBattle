@@ -10,6 +10,7 @@ import java.util.Queue;
 import java.util.Random;
 import logic.ship.ShipConstants.TYPE_OF_SHIP;
 import logic.ship.ShipConstants.DIRECTION;
+import logic.ship.ShipParams;
 
 public abstract class AIPlayer extends Player {
 
@@ -43,7 +44,7 @@ public abstract class AIPlayer extends Player {
             else if (dirIntRnd == 2) dir = DIRECTION.RIGHT;
             else if (dirIntRnd == 3) dir = DIRECTION.LEFT;
 
-            if (placeShip(x,y,type,dir)) iteration++;
+            if (placeShip(new ShipParams(dir,playerBattlefield.getCell(x,y),type))) iteration++;
         }
     }
     protected boolean randomShoot() {

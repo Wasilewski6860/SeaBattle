@@ -8,6 +8,30 @@ import java.util.List;
 import logic.ship.ShipConstants.DIRECTION;
 
 public abstract class Ship {
+
+    public class LocationParams{
+        ShipConstants.DIRECTION dir;
+        Cell startCell;
+        ShipConstants.TYPE_OF_SHIP type;
+
+        public LocationParams(ShipConstants.DIRECTION dir, Cell startCell, ShipConstants.TYPE_OF_SHIP type) {
+            this.dir = dir;
+            this.startCell = startCell;
+            this.type = type;
+        }
+
+        public ShipConstants.DIRECTION getDir() {
+            return dir;
+        }
+
+        public Cell getStartCell() {
+            return startCell;
+        }
+
+        public ShipConstants.TYPE_OF_SHIP getType() {
+            return type;
+        }
+    }
     private Cell[] shipBody;//
     private List<Cell> borders;
     private Battlefield shipBattlefield;//
