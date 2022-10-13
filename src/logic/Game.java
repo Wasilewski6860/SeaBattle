@@ -1,8 +1,5 @@
-import logic.Cell;
-import logic.Ship;
-import logic.Battlefield;
-import logic.ai.AI;
-import logic.ai.NormalAI;
+package logic;
+
 import logic.players.HumanPlayer;
 import logic.players.Player;
 
@@ -11,15 +8,15 @@ import java.util.Scanner;
 
 public class Game {
 
-    protected static Battlefield playerBattlefield;
-    protected static Battlefield enemyBattlefield;
+    protected static Battlefield firstPlayerField;
+    protected static Battlefield secondPlayerField;
 
     static Player[] players;
 
     protected static void initialize() {
-        playerBattlefield = new Battlefield();
-        enemyBattlefield = new Battlefield();
-        players = new Player[]{new HumanPlayer(playerBattlefield, enemyBattlefield), new logic.players.ai.NormalAI(enemyBattlefield, playerBattlefield)};
+        firstPlayerField = new Battlefield();
+        secondPlayerField = new Battlefield();
+        players = new Player[]{new HumanPlayer(firstPlayerField, secondPlayerField), new logic.players.ai.NormalAI(secondPlayerField, firstPlayerField)};
     }
 
     protected static void placeShips(Battlefield battlefield) {
@@ -79,8 +76,8 @@ public class Game {
     }
     public static void printScreen() {
 
-        Cell[][] playerCellTable = playerBattlefield.getTable();
-        Cell[][] enemyCellTable = enemyBattlefield.getTable();
+        Cell[][] playerCellTable = firstPlayerField.getTable();
+        Cell[][] enemyCellTable = secondPlayerField.getTable();
 
         System.out.println("Player table");
         for (Cell[] row : playerCellTable) {
@@ -145,6 +142,7 @@ public class Game {
             player.placeShips();
         }
         printScreen();
+        while (firstPlayerField.getShips().size() != 0 && secondPlayerField.getShips().size() != 0)
         for (Player player : players){
            while (player.shoot()) System.out.println();
            printScreen();
@@ -158,8 +156,8 @@ public class Game {
 //            System.out.println("your count = " + playerBattlefield.getShips().size() + " enemy count = " + enemyBattlefield.getShips().size());
 //        }
 
-        if (playerBattlefield.getShips().size() == 0) System.out.println("You lose");
-        if (enemyBattlefield.getShips().size() == 0) System.out.println("Congratulations! You win!");
+        if (firstPlayerField.getShips().size() == 0) System.out.println("You lose");
+        if (secondPlayerField.getShips().size() == 0) System.out.println("Congratulations! You win!");
 
     }
 
@@ -168,7 +166,7 @@ public class Game {
         int x = in.nextInt();
         int y = in.nextInt();
 
-        return enemyBattlefield.getShot(enemyBattlefield.getCell(x, y));
+        return secondPlayerField.getShot(secondPlayerField.getCell(x, y));
 
     }
 

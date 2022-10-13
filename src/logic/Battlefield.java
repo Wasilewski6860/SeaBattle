@@ -10,7 +10,7 @@ public class Battlefield {
 
     private Cell[][] table;
     private List<Ship> ships;
-    private final borderPlacer borderPlacer;
+    private final BorderPlacer borderPlacer;
     private final ShipChecker shipChecker;
 
     public static final int BATTLE_SHIPS_COUNT = 1;
@@ -24,7 +24,7 @@ public class Battlefield {
     public Battlefield() {
 
         this.table = new Cell[TABLE_HEIGHT][TABLE_WIDTH];
-        this.borderPlacer = new borderPlacer(this);
+        this.borderPlacer = new BorderPlacer(this);
         this.shipChecker = new ShipChecker(this);
 
         for (int i = 0; i < table.length; i++)
@@ -65,6 +65,16 @@ public class Battlefield {
         this.ships = ships;
     }
 
+    public boolean isShootable(int x,int y){
+        Cell cell = getCell(x,y);
+        return cell.getType() == Cell.typeOfCell.SHELLED || cell.getType() == Cell.typeOfCell.SHIP_WRECKED;
+    }
+
+    public boolean containsShip(int x,int y){
+        Cell cell = getCell(x,y);
+        return cell.getType() == Cell.typeOfCell.SHIP;
+    }
+
     public boolean getShot(Cell cell) {
         //    List<Ship> tempShip = ships;
         Ship ship = cell.getShip();
@@ -73,12 +83,10 @@ public class Battlefield {
         if (ship != null) {
             // System.out.println("Table ship shot");
          //   isSuccessful = true;
-            ship.getWound(cell);
-            if (ship.getHp() == 0) {
+            int currentShipHp = ship.getWound(cell);
+            if (currentShipHp == 0) {
                 //  System.out.println("Table ship died");
-                for (Cell borderCell : ship.getBorders()) {
-                    borderCell.setType(Cell.typeOfCell.SHELLED);
-                }
+                borderPlacer.resetBorders(ship);
                 ships.remove(ship);
             }
             return true;

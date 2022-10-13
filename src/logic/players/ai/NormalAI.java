@@ -1,7 +1,6 @@
 package logic.players.ai;
 
 import logic.Battlefield;
-import logic.ai.AI;
 import logic.players.Player;
 
 public class NormalAI extends AIPlayer {

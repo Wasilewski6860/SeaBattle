@@ -97,10 +97,11 @@ public class Ship {
         this.shipBattlefield.setTable(cellTable);
     }
 
-    protected void getWound(Cell cell) {
+    protected int  getWound(Cell cell) {
         if (cell.blast()) {
             if (hp > 0) hp--;
         }
+        return hp;
     }
 
     public Cell[] getShipBody() {

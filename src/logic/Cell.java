@@ -1,7 +1,10 @@
 package logic;
 
-public class Cell {
+import graphic.Drawable;
 
+import java.awt.*;
+
+public class Cell  {
 
     public enum typeOfCell {
         SHELLED,

@@ -3,7 +3,7 @@ package logic.players.ai;
 import logic.Battlefield;
 import logic.Cell;
 import logic.Ship;
-import logic.ai.AI;
+
 import logic.players.Player;
 
 import java.util.LinkedList;
@@ -14,6 +14,7 @@ public abstract class AIPlayer extends Player {
 
     protected Cell target;
     protected Queue<Cell> preyBody;
+    protected Queue<Cell> shelledCells;
     protected boolean isHunting;
 
     public AIPlayer(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
@@ -22,6 +23,7 @@ public abstract class AIPlayer extends Player {
         target = null;
         isHunting = false;
         preyBody = new LinkedList<>();
+        shelledCells=new LinkedList<>();
     }
 
     @Override
@@ -49,39 +51,36 @@ public abstract class AIPlayer extends Player {
         int x = rnd.nextInt(10);
         int y = rnd.nextInt(10);
 
-        Cell[][] cells = playerBattlefield.getTable();
-        Cell cell = cells[y][x];
-
-        while (cell.getType() == Cell.typeOfCell.SHELLED || cell.getType() == Cell.typeOfCell.SHIP_WRECKED) {
+        while (shelledCells.contains(enemyBattlefield.getCell(x,y))) {
             x = rnd.nextInt(10);
             y = rnd.nextInt(10);
-            cell = cells[y][x];
         }
 
-        if (cell.getType() == Cell.typeOfCell.SHIP) {
-            preyBody.add(cell);
+        if (enemyBattlefield.containsShip(x,y)) {
+            preyBody.add(enemyBattlefield.getCell(x,y));
             target = preyBody.element();
             isHunting = true;
             System.out.println("An idiot detected a ship!");
         }
-        return playerBattlefield.getShot(playerBattlefield.getCell(x, y));
+        shelledCells.add(enemyBattlefield.getCell(x,y));
+        return enemyBattlefield.getShot(enemyBattlefield.getCell(x, y));
     }
 
     protected boolean simpleShoot(int deltaX, int deltaY) {
         Cell tempCell;
-        if (target.getX() + deltaX >= 0 && target.getX() + deltaX <= playerBattlefield.getTable().length - 1
-                && target.getY() + deltaY >= 0 && target.getY() + deltaY <= playerBattlefield.getTable().length - 1
+        if (target.getX() + deltaX >= 0 && target.getX() + deltaX <= enemyBattlefield.getTable().length - 1
+                && target.getY() + deltaY >= 0 && target.getY() + deltaY <= enemyBattlefield.getTable().length - 1
                 //     && table.getCell(mostWanted.getX()+deltaX,mostWanted.getY()+deltaY).blast()
-                && (playerBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY).getType() != Cell.typeOfCell.SHELLED
-                && playerBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY).getType() != Cell.typeOfCell.SHIP_WRECKED)
+                && !shelledCells.contains( enemyBattlefield.getCell( target.getX()+deltaX,target.getY()+deltaY))
         ) {
 
-            tempCell = playerBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY);
-            if (tempCell.getType() == Cell.typeOfCell.SHIP) {
+            tempCell = enemyBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY);
+            if (enemyBattlefield.containsShip(tempCell.getX(),tempCell.getY())) {
                 preyBody.add(tempCell);
                 target = preyBody.element();
             }
-            playerBattlefield.getShot(tempCell);
+            shelledCells.add(tempCell);
+            enemyBattlefield.getShot(tempCell);
             return true;
 
         }

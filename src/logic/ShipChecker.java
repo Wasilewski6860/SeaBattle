@@ -97,7 +97,6 @@ public class ShipChecker {
             }
         }
 
-        battlefield.setTable(cellTable);
         return true;
     }
 }
