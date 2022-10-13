@@ -2,13 +2,14 @@ package logic.players.ai;
 
 import logic.Battlefield;
 import logic.Cell;
-import logic.Ship;
 
 import logic.players.Player;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import logic.ship.ShipConstants.TYPE_OF_SHIP;
+import logic.ship.ShipConstants.DIRECTION;
 
 public abstract class AIPlayer extends Player {
 
@@ -27,20 +28,20 @@ public abstract class AIPlayer extends Player {
     }
 
     @Override
-    public  void placeShip(Ship.TYPE_OF_SHIP type, int count) {
+    public  void placeShip(TYPE_OF_SHIP type, int count) {
         int iteration = 0;
         Random rnd = new Random();
 
         while (iteration < count) {
             int x = rnd.nextInt(10);
             int y = rnd.nextInt(10);
-            Ship.DIRECTION dir = Ship.DIRECTION.TOP;
+            DIRECTION dir = DIRECTION.TOP;
             int dirIntRnd = rnd.nextInt(3);
 
-            if (dirIntRnd == 0) dir = Ship.DIRECTION.TOP;
-            else if (dirIntRnd == 1) dir = Ship.DIRECTION.BOTTOM;
-            else if (dirIntRnd == 2) dir = Ship.DIRECTION.RIGHT;
-            else if (dirIntRnd == 3) dir = Ship.DIRECTION.LEFT;
+            if (dirIntRnd == 0) dir = DIRECTION.TOP;
+            else if (dirIntRnd == 1) dir = DIRECTION.BOTTOM;
+            else if (dirIntRnd == 2) dir = DIRECTION.RIGHT;
+            else if (dirIntRnd == 3) dir = DIRECTION.LEFT;
 
             if (placeShip(x,y,type,dir)) iteration++;
         }

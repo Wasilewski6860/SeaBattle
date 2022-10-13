@@ -3,8 +3,15 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import static logic.Ship.TYPE_OF_SHIP;
-import static logic.Ship.DIRECTION;
+import static logic.ship.ShipConstants.TYPE_OF_SHIP;
+import static logic.ship.ShipConstants.DIRECTION;
+import logic.ship.Ship;
+import logic.ship.ShipChecker;
+import logic.ship.ShipConstants;
+import logic.ship.ships.Battleship;
+import logic.ship.ships.Cruiser;
+import logic.ship.ships.Destroyer;
+import logic.ship.ships.TorpedoBoat;
 
 public class Battlefield {
 
@@ -34,10 +41,18 @@ public class Battlefield {
         this.ships = new ArrayList<>();
     }
 
-    public boolean placeShip(final TYPE_OF_SHIP type, final DIRECTION dir, final Cell startCell) {
+    public boolean placeShip( TYPE_OF_SHIP type, DIRECTION dir, final Cell startCell) {
+
 
         if (shipChecker.check(type, dir, startCell)) {
-            Ship ship = new Ship(type, dir, startCell, this);
+            Ship ship;
+            switch (type){
+                case BATTLESHIP -> ship = new Battleship(dir,startCell,this);
+                case DESTROYER -> ship = new Cruiser(dir,startCell,this);
+                case CRUISER -> ship = new Destroyer(dir,startCell,this);
+                case TORPEDO_BOAT -> ship = new TorpedoBoat(dir,startCell,this);
+                default -> ship = new TorpedoBoat(ShipConstants.DIRECTION.TOP,startCell,this);
+            }
             ships.add(ship);
             borderPlacer.setBorders(ship);
             return true;

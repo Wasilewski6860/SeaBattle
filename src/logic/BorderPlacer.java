@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.List;
+import logic.ship.Ship;
 
 public class BorderPlacer {
 
@@ -10,7 +11,7 @@ public class BorderPlacer {
     public List<Cell> setBorders(Ship ship) {
 
         Cell[][] tableForOverride = battlefield.getTable();
-        ArrayList<Cell> list = new ArrayList<>();
+        List<Cell> list = new ArrayList<>();
 
         Cell[] shipBody = ship.getShipBody();
 
@@ -56,7 +57,7 @@ public class BorderPlacer {
         return ship.getBorders();
     }
 
-    private Cell setBorder(Cell[][] tableForOverride, ArrayList<Cell> list, Cell shipDeck, int deltaY, int deltaX) {
+    private Cell setBorder(Cell[][] tableForOverride, List<Cell> list, Cell shipDeck, int deltaY, int deltaX) {
 
         Cell cell = tableForOverride[shipDeck.getY() + deltaY][shipDeck.getX() + deltaX];
         if (cell.getType() != Cell.typeOfCell.SHIP) {

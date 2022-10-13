@@ -1,10 +1,11 @@
 package logic.players;
 
 import logic.Battlefield;
-import logic.Ship;
 
-import java.util.Random;
 import java.util.Scanner;
+
+import logic.ship.ShipConstants.TYPE_OF_SHIP;
+import logic.ship.ShipConstants.DIRECTION;
 
 public class HumanPlayer extends Player{
 
@@ -14,7 +15,7 @@ public class HumanPlayer extends Player{
 
 
     @Override
-    public  void placeShip(Ship.TYPE_OF_SHIP type, int count) {
+    public  void placeShip(TYPE_OF_SHIP type, int count) {
         int iteration = 0;
 
 
@@ -31,11 +32,11 @@ public class HumanPlayer extends Player{
             System.out.println(type + " coordinates is " + x + " " + y);
 
 
-            Ship.DIRECTION dir = switch (strDirection) {
-                case "left" -> Ship.DIRECTION.LEFT;
-                case "top" -> Ship.DIRECTION.TOP;
-                case "bottom" -> Ship.DIRECTION.BOTTOM;
-                default -> Ship.DIRECTION.RIGHT;
+            DIRECTION dir = switch (strDirection) {
+                case "left" -> DIRECTION.LEFT;
+                case "top" -> DIRECTION.TOP;
+                case "bottom" -> DIRECTION.BOTTOM;
+                default -> DIRECTION.RIGHT;
             };
 
             System.out.println("Selected dir is"+dir);

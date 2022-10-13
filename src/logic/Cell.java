@@ -3,6 +3,7 @@ package logic;
 import graphic.Drawable;
 
 import java.awt.*;
+import logic.ship.Ship;
 
 public class Cell  {
 
@@ -29,7 +30,7 @@ public class Cell  {
 
     //Return true when cell is ship
     //Another variant is to return true
-    protected boolean blast() {
+    public boolean blast() {
 
         switch (type) {
             case FREE, SHIP_ZONE -> {

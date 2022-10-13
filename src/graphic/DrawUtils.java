@@ -1,7 +1,6 @@
 package graphic;
 
 import logic.Cell;
-import logic.Ship;
 
 import javax.swing.*;
 import java.awt.*;

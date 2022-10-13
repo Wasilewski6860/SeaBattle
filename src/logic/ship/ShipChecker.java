@@ -1,14 +1,19 @@
-package logic;
+package logic.ship;
+
+import logic.Battlefield;
+import logic.Cell;
+import logic.ship.ShipConstants.DIRECTION;
+import logic.ship.ShipConstants.TYPE_OF_SHIP;
 
 public class ShipChecker {
 
-    private  Battlefield battlefield;
+    private Battlefield battlefield;
 
     public ShipChecker(Battlefield battlefield) {
         this.battlefield = battlefield;
     }
 
-    public boolean check(Ship.TYPE_OF_SHIP type, Ship.DIRECTION dir, Cell startCell) {
+    public boolean check(TYPE_OF_SHIP type, DIRECTION dir, Cell startCell) {
 
         int length = 0;
         switch (type) {
@@ -17,12 +22,12 @@ public class ShipChecker {
             case DESTROYER -> length = 2;
             case TORPEDO_BOAT -> length = 1;
         }
-        if (checkForAccommodation(battlefield, length, dir, startCell)) if (checkForCollisions(battlefield, type, dir, startCell, length))  return true;
+        if (checkForAccommodation(battlefield, length, dir, startCell)) if (checkForCollisions(battlefield, dir, startCell, length))  return true;
 
         return false;
     }
 
-    private static boolean checkForAccommodation(Battlefield battlefield, int length, Ship.DIRECTION dir, Cell startCell) {
+    private static boolean checkForAccommodation(Battlefield battlefield, int length, DIRECTION dir, Cell startCell) {
         switch (dir) {
             case TOP -> {
                 // int j = 0;
@@ -57,7 +62,7 @@ public class ShipChecker {
         return true;
     }
 
-    private static boolean checkForCollisions(Battlefield battlefield, Ship.TYPE_OF_SHIP type, Ship.DIRECTION dir, Cell startCell, int length) {
+    private static boolean checkForCollisions(Battlefield battlefield,  DIRECTION dir, Cell startCell, int length) {
         //check for free of neighbour cells
         Cell[][] cellTable = battlefield.getTable();
         switch (dir) {

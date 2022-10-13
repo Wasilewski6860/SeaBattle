@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="With Players and changed place of ships">
-      <change afterPath="$PROJECT_DIR$/src/graphic/DrawPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphic/Drawable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphic/Window.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/ship/Ship.java" afterDir="false" />
+    <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Working players and the beginning of graphics">
+      <change afterPath="$PROJECT_DIR$/src/console/ConsolePrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/console/ConsoleScanner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/ship/ShipConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/ship/ShipParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/Battleship.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/Cruiser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/Destroyer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/ship/ships/TorpedoBoat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Battlefield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Battlefield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/BorderPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/BorderPlacer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Ship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ShipChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ShipChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ai/AI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ai/EasyAI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ai/NormalAI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/borderPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/BorderPlacer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/Ship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ShipChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ship/ShipChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/players/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/HumanPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/players/ai/AIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/ai/AIPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/players/ai/NormalAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/ai/NormalAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/ship/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ship/Ship.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +51,6 @@
     <setting file="file://$PROJECT_DIR$/src/logic/BorderPlacer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Cell.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Game.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/logic/Ship.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,8 +71,8 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="Game" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="logic.Game" />
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SeaBattle" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -89,7 +92,8 @@
       <workItem from="1665257175878" duration="5320000" />
       <workItem from="1665340217814" duration="88000" />
       <workItem from="1665591586767" duration="1964000" />
-      <workItem from="1665668600257" duration="330000" />
+      <workItem from="1665668600257" duration="6940000" />
+      <workItem from="1665675556283" duration="4620000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -112,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665253955637</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Working players and the beginning of graphics">
+      <created>1665669059796</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665669059796</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,7 +142,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="With Players and changed place of ships" />
-    <option name="LAST_COMMIT_MESSAGE" value="With Players and changed place of ships" />
+    <MESSAGE value="Working players and the beginning of graphics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working players and the beginning of graphics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -145,7 +157,19 @@
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/logic/ship/ships/Battleship.java</url>
+          <line>13</line>
+          <properties class="logic.ship.ships.Battleship" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SeaBattle$Game.ic" NAME="Game Coverage Results" MODIFIED="1665674659475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
