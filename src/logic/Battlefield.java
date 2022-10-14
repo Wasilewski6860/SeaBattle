@@ -9,11 +9,6 @@ import static logic.ship.ShipConstants.DIRECTION;
 import logic.ship.BorderPlacer;
 import logic.ship.Ship;
 import logic.ship.ShipChecker;
-import logic.ship.ShipConstants;
-import logic.ship.ships.Battleship;
-import logic.ship.ships.Cruiser;
-import logic.ship.ships.Destroyer;
-import logic.ship.ships.TorpedoBoat;
 
 public class Battlefield {
 
@@ -77,7 +72,7 @@ public class Battlefield {
 
     public boolean isShootable(int x,int y){
         Cell cell = getCell(x,y);
-        return cell.getType() == Cell.typeOfCell.SHELLED || cell.getType() == Cell.typeOfCell.SHIP_WRECKED;
+        return cell.getType() != Cell.typeOfCell.SHELLED && cell.getType() != Cell.typeOfCell.SHIP_WRECKED;
     }
 
     public boolean containsShip(int x,int y){

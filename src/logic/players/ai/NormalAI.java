@@ -1,12 +1,16 @@
 package logic.players.ai;
 
 import logic.Battlefield;
+import logic.TurnProviders.AITurnProvider;
+import logic.TurnProviders.NormalAITurnProvider;
+import logic.TurnProviders.TurnProvider;
 import logic.players.Player;
 
 public class NormalAI extends AIPlayer {
 
     public NormalAI(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
         super(playerBattlefield, enemyBattlefield);
+        provider = new NormalAITurnProvider(this);
     }
 
     @Override

@@ -3,6 +3,10 @@ package logic.players.ai;
 import logic.Battlefield;
 import logic.Cell;
 
+import logic.Coordinate;
+import logic.TurnProviders.AITurnProvider;
+import logic.TurnProviders.HumanTurnProvider;
+import logic.TurnProviders.TurnProvider;
 import logic.players.Player;
 
 import java.util.LinkedList;
@@ -21,62 +25,36 @@ public abstract class AIPlayer extends Player {
 
     public AIPlayer(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
         super(playerBattlefield, enemyBattlefield);
-
         target = null;
         isHunting = false;
         preyBody = new LinkedList<>();
         shelledCells=new LinkedList<>();
+        provider = new AITurnProvider(this);
     }
 
-    @Override
-    public  void placeShip(int length, int count) {
-        int iteration = 0;
-        Random rnd = new Random();
-
-        while (iteration < count) {
-            int x = rnd.nextInt(10);
-            int y = rnd.nextInt(10);
-            DIRECTION dir = DIRECTION.TOP;
-            int dirIntRnd = rnd.nextInt(3);
-
-            if (dirIntRnd == 0) dir = DIRECTION.TOP;
-            else if (dirIntRnd == 1) dir = DIRECTION.BOTTOM;
-            else if (dirIntRnd == 2) dir = DIRECTION.RIGHT;
-            else if (dirIntRnd == 3) dir = DIRECTION.LEFT;
-
-            if (placeShip(new Ship.LocationParams(dir,getPlayerBattlefield().getCell(x,y)),length)) iteration++;
-        }
-    }
     protected boolean randomShoot() {
 
-        Random rnd = new Random();
-        int x = rnd.nextInt(10);
-        int y = rnd.nextInt(10);
-
-        while (shelledCells.contains(enemyBattlefield.getCell(x,y))) {
-            x = rnd.nextInt(10);
-            y = rnd.nextInt(10);
-        }
-
-        if (enemyBattlefield.containsShip(x,y)) {
-            preyBody.add(enemyBattlefield.getCell(x,y));
+        Coordinate coordinate = provider.coordinateOfShoot();
+        if (enemyBattlefield.containsShip( coordinate.getX(), coordinate.getY())) {
+            preyBody.add(enemyBattlefield.getCell(coordinate.getX(), coordinate.getY()));
             target = preyBody.element();
             isHunting = true;
-            System.out.println("An idiot detected a ship!");
         }
-        shelledCells.add(enemyBattlefield.getCell(x,y));
-        return enemyBattlefield.getShot(enemyBattlefield.getCell(x, y));
+        shelledCells.add(enemyBattlefield.getCell(coordinate.getX(), coordinate.getY()));
+        return enemyBattlefield.getShot(enemyBattlefield.getCell(coordinate.getX(), coordinate.getY()));
     }
 
     protected boolean simpleShoot(int deltaX, int deltaY) {
         Cell tempCell;
-        if (target.getX() + deltaX >= 0 && target.getX() + deltaX <= enemyBattlefield.getTable().length - 1
-                && target.getY() + deltaY >= 0 && target.getY() + deltaY <= enemyBattlefield.getTable().length - 1
+        int currentX = target.getX() + deltaX;
+        int currentY = target.getY() + deltaY;
+        if (currentX >= 0 && currentX <= enemyBattlefield.getTable().length - 1
+                && currentY >= 0 && currentY <= enemyBattlefield.getTable().length - 1
                 //     && table.getCell(mostWanted.getX()+deltaX,mostWanted.getY()+deltaY).blast()
-                && !shelledCells.contains( enemyBattlefield.getCell( target.getX()+deltaX,target.getY()+deltaY))
+                && !shelledCells.contains( enemyBattlefield.getCell( currentX,currentY))
         ) {
 
-            tempCell = enemyBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY);
+            tempCell = enemyBattlefield.getCell(currentX, currentY);
             if (enemyBattlefield.containsShip(tempCell.getX(),tempCell.getY())) {
                 preyBody.add(tempCell);
                 target = preyBody.element();

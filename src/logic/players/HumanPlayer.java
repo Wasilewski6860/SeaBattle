@@ -1,39 +1,32 @@
 package logic.players;
 
-import console.ConsoleScanner;
 import logic.Battlefield;
 
 import logic.Coordinate;
-import logic.ship.ShipChecker;
+import logic.TurnProviders.HumanTurnProvider;
 
 public class HumanPlayer extends Player {
 
+
     public HumanPlayer(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
         super(playerBattlefield, enemyBattlefield);
+        provider = new HumanTurnProvider(this);
     }
-
 
     @Override
     public void placeShip(int length, int count) {
-        int iteration = 0;
-
         System.out.println("Place " + length + "-deck ship ");
+        int iteration = 0;
         while (iteration < count) {
-            /**
-             * Что правильней?
-             * if (new ShipChecker().check(ConsoleScanner.readShipParams(this), length,getPlayerBattlefield()))iteration++;
-             * Или
-             */
-            if (placeShip(ConsoleScanner.readShipParams(this), length)) iteration++;
+            if (placeShip(provider.locationParams(), length)) iteration++;
         }
-
     }
 
 
     @Override
     public boolean shoot() {
-        Coordinate coordinateOfShot = ConsoleScanner.readShotParams(this);
-        return enemyBattlefield.getShot(enemyBattlefield.getCell(coordinateOfShot.x(), coordinateOfShot.y()));
+        Coordinate coordinateOfShot = provider.coordinateOfShoot();
+        return enemyBattlefield.getShot(enemyBattlefield.getCell(coordinateOfShot.getX(), coordinateOfShot.getY()));
 
     }
 }
