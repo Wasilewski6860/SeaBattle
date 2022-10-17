@@ -18,17 +18,17 @@ public class BorderPlacer {
 
         for (Cell shipDeck : shipBody) {
             if (shipDeck.getX() != 0) {
-                setBorder( list, shipDeck, 0, -1);
-                if (shipDeck.getY() != 0) setBorder( list, shipDeck, -1, -1);
-                if (shipDeck.getY() != battlefield.getTable().length - 1) setBorder( list, shipDeck, 1, -1);
+                setBorder(list, shipDeck, 0, -1);
+                if (shipDeck.getY() != 0) setBorder(list, shipDeck, -1, -1);
+                if (shipDeck.getY() != battlefield.getTable().length - 1) setBorder(list, shipDeck, 1, -1);
             }
             if (shipDeck.getX() != battlefield.getTable().length - 1) {
-                setBorder( list, shipDeck, 0, 1);
-                if (shipDeck.getY() != 0) setBorder( list, shipDeck, -1, 1);
-                if (shipDeck.getY() != battlefield.getTable().length - 1) setBorder( list, shipDeck, 1, 1);
+                setBorder(list, shipDeck, 0, 1);
+                if (shipDeck.getY() != 0) setBorder(list, shipDeck, -1, 1);
+                if (shipDeck.getY() != battlefield.getTable().length - 1) setBorder(list, shipDeck, 1, 1);
             }
-            if (shipDeck.getY() != 0) setBorder( list, shipDeck, -1, 0);
-            if (shipDeck.getY() != battlefield.getTable().length - 1) setBorder( list, shipDeck, 1, 0);
+            if (shipDeck.getY() != 0) setBorder(list, shipDeck, -1, 0);
+            if (shipDeck.getY() != battlefield.getTable().length - 1) setBorder(list, shipDeck, 1, 0);
         }
         ship.setBorders(list);
         return list;
@@ -39,7 +39,7 @@ public class BorderPlacer {
         return ship.getBorders();
     }
 
-    private Cell setBorder( List<Cell> list, Cell shipDeck, int deltaY, int deltaX) {
+    private Cell setBorder(List<Cell> list, Cell shipDeck, int deltaY, int deltaX) {
 
         Cell cell = battlefield.getTable()[shipDeck.getY() + deltaY][shipDeck.getX() + deltaX];
         if (cell.getType() != Cell.typeOfCell.SHIP) {

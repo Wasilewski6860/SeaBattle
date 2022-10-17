@@ -19,17 +19,17 @@ public class AITurnProvider extends TurnProvider {
     public Ship.LocationParams locationParams() {
         Random rnd = new Random();
 
-            int x = rnd.nextInt(10);
-            int y = rnd.nextInt(10);
-            ShipConstants.DIRECTION dir = ShipConstants.DIRECTION.TOP;
-            int dirIntRnd = rnd.nextInt(3);
+        int x = rnd.nextInt(10);
+        int y = rnd.nextInt(10);
+        ShipConstants.DIRECTION dir = ShipConstants.DIRECTION.TOP;
+        int dirIntRnd = rnd.nextInt(3);
 
-            if (dirIntRnd == 0) dir = ShipConstants.DIRECTION.TOP;
-            else if (dirIntRnd == 1) dir = ShipConstants.DIRECTION.BOTTOM;
-            else if (dirIntRnd == 2) dir = ShipConstants.DIRECTION.RIGHT;
-            else if (dirIntRnd == 3) dir = ShipConstants.DIRECTION.LEFT;
+        if (dirIntRnd == 0) dir = ShipConstants.DIRECTION.TOP;
+        else if (dirIntRnd == 1) dir = ShipConstants.DIRECTION.BOTTOM;
+        else if (dirIntRnd == 2) dir = ShipConstants.DIRECTION.RIGHT;
+        else if (dirIntRnd == 3) dir = ShipConstants.DIRECTION.LEFT;
 
-            return new Ship.LocationParams(dir,getPlayer().getPlayerBattlefield().getCell(x,y));
+        return new Ship.LocationParams(dir, getPlayer().getPlayerBattlefield().getCell(x, y));
 
     }
 
@@ -39,10 +39,10 @@ public class AITurnProvider extends TurnProvider {
         int x = rnd.nextInt(10);
         int y = rnd.nextInt(10);
 
-        while (!getPlayer().getEnemyBattlefield().isShootable(x,y)) {
+        while (!getPlayer().getEnemyBattlefield().isShootable(x, y)) {
             x = rnd.nextInt(10);
             y = rnd.nextInt(10);
         }
-        return new Coordinate(x,y);
+        return new Coordinate(x, y);
     }
 }

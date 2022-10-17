@@ -1,15 +1,13 @@
 package logic.players;
 
 import logic.Battlefield;
-import logic.TurnProviders.AITurnProvider;
-import logic.TurnProviders.HumanTurnProvider;
 import logic.TurnProviders.TurnProvider;
 import logic.ship.Ship;
 import logic.ship.ShipConstants;
 
 public abstract class Player {
-    public Battlefield playerBattlefield;
-    public Battlefield enemyBattlefield;
+    private Battlefield playerBattlefield;
+    private Battlefield enemyBattlefield;
     public TurnProvider provider;
 
     public Player(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
@@ -17,13 +15,11 @@ public abstract class Player {
         this.enemyBattlefield = enemyBattlefield;
     }
 
-    public void placeShip(int length, int count) {
+    public void placeShipsOfCertainType(int length, int count) {
         int iteration = 0;
-
         while (iteration < count) {
             if (placeShip(provider.locationParams(), length)) iteration++;
         }
-
     }
 
     public boolean placeShip(Ship.LocationParams location, int length) {
@@ -31,8 +27,8 @@ public abstract class Player {
     }
 
     public void placeShips() {
-        placeShip(ShipConstants.BATTLESHIP_LENGTH, Battlefield.BATTLE_SHIPS_COUNT);
-        placeShip(ShipConstants.CRUISER_LENGTH, Battlefield.CRUISERS_COUNT);
+        placeShipsOfCertainType(ShipConstants.BATTLESHIP_LENGTH, Battlefield.BATTLE_SHIPS_COUNT);
+        placeShipsOfCertainType(ShipConstants.CRUISER_LENGTH, Battlefield.CRUISERS_COUNT);
 //      placeShip(TYPE_OF_SHIP.DESTROYER, Battlefield.DESTROYERS_COUNT);
 //      placeShip(TYPE_OF_SHIP.TORPEDO_BOAT, Battlefield.TORPEDO_BOATS_COUNT);
     }

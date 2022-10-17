@@ -35,32 +35,32 @@ public abstract class AIPlayer extends Player {
     protected boolean randomShoot() {
 
         Coordinate coordinate = provider.coordinateOfShoot();
-        if (enemyBattlefield.containsShip( coordinate.getX(), coordinate.getY())) {
-            preyBody.add(enemyBattlefield.getCell(coordinate.getX(), coordinate.getY()));
+        if (getEnemyBattlefield().containsShip( coordinate.getX(), coordinate.getY())) {
+            preyBody.add(getEnemyBattlefield().getCell(coordinate.getX(), coordinate.getY()));
             target = preyBody.element();
             isHunting = true;
         }
-        shelledCells.add(enemyBattlefield.getCell(coordinate.getX(), coordinate.getY()));
-        return enemyBattlefield.getShot(enemyBattlefield.getCell(coordinate.getX(), coordinate.getY()));
+        shelledCells.add(getEnemyBattlefield().getCell(coordinate.getX(), coordinate.getY()));
+        return getEnemyBattlefield().getShot(getEnemyBattlefield().getCell(coordinate.getX(), coordinate.getY()));
     }
 
     protected boolean simpleShoot(int deltaX, int deltaY) {
         Cell tempCell;
         int currentX = target.getX() + deltaX;
         int currentY = target.getY() + deltaY;
-        if (currentX >= 0 && currentX <= enemyBattlefield.getTable().length - 1
-                && currentY >= 0 && currentY <= enemyBattlefield.getTable().length - 1
+        if (currentX >= 0 && currentX <= getEnemyBattlefield().getTable().length - 1
+                && currentY >= 0 && currentY <= getEnemyBattlefield().getTable().length - 1
                 //     && table.getCell(mostWanted.getX()+deltaX,mostWanted.getY()+deltaY).blast()
-                && !shelledCells.contains( enemyBattlefield.getCell( currentX,currentY))
+                && !shelledCells.contains( getEnemyBattlefield().getCell( currentX,currentY))
         ) {
 
-            tempCell = enemyBattlefield.getCell(currentX, currentY);
-            if (enemyBattlefield.containsShip(tempCell.getX(),tempCell.getY())) {
+            tempCell = getEnemyBattlefield().getCell(currentX, currentY);
+            if (getEnemyBattlefield().containsShip(tempCell.getX(),tempCell.getY())) {
                 preyBody.add(tempCell);
                 target = preyBody.element();
             }
             shelledCells.add(tempCell);
-            enemyBattlefield.getShot(tempCell);
+            getEnemyBattlefield().getShot(tempCell);
             return true;
 
         }

@@ -3,8 +3,6 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import static logic.ship.ShipConstants.TYPE_OF_SHIP;
-import static logic.ship.ShipConstants.DIRECTION;
 
 import logic.ship.BorderPlacer;
 import logic.ship.Ship;
@@ -41,8 +39,8 @@ public class Battlefield {
     public boolean placeShip(int length, Ship.LocationParams location) {
 
 
-        if (shipChecker.check(location,length,this)) {
-            Ship ship = new Ship(location,this,length);
+        if (shipChecker.check(location, length, this)) {
+            Ship ship = new Ship(location, this, length);
             ships.add(ship);
             borderPlacer.setBorders(ship);
             return true;
@@ -70,24 +68,24 @@ public class Battlefield {
         this.ships = ships;
     }
 
-    public boolean isShootable(int x,int y){
-        Cell cell = getCell(x,y);
+    public boolean isShootable(int x, int y) {
+        Cell cell = getCell(x, y);
         return cell.getType() != Cell.typeOfCell.SHELLED && cell.getType() != Cell.typeOfCell.SHIP_WRECKED;
     }
 
-    public boolean containsShip(int x,int y){
-        Cell cell = getCell(x,y);
+    public boolean containsShip(int x, int y) {
+        Cell cell = getCell(x, y);
         return cell.getType() == Cell.typeOfCell.SHIP;
     }
 
     public boolean getShot(Cell cell) {
         //    List<Ship> tempShip = ships;
         Ship ship = cell.getShip();
-       // boolean isSuccessful = false;
+        // boolean isSuccessful = false;
 
         if (ship != null) {
             // System.out.println("Table ship shot");
-         //   isSuccessful = true;
+            //   isSuccessful = true;
             int currentShipHp = ship.getWound(cell);
             if (currentShipHp == 0) {
                 //  System.out.println("Table ship died");

@@ -14,8 +14,6 @@ public class Ship {
         ShipConstants.DIRECTION dir;
         Cell startCell;
 
-
-
         public LocationParams(ShipConstants.DIRECTION dir, Cell startCell) {
             this.dir = dir;
             this.startCell = startCell;

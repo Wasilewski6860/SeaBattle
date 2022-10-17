@@ -3,24 +3,23 @@ package logic.ship;
 import logic.Battlefield;
 import logic.Cell;
 import logic.ship.ShipConstants.DIRECTION;
-import logic.ship.ShipConstants.TYPE_OF_SHIP;
 
 public class ShipChecker {
 
     //private Battlefield battlefield;
 
-   // public ShipChecker(Battlefield battlefield) {
-   //     this.battlefield = battlefield;
-   // }
+    // public ShipChecker(Battlefield battlefield) {
+    //     this.battlefield = battlefield;
+    // }
 
-    public  boolean check(Ship.LocationParams location, int length, Battlefield battlefield) {
+    public boolean check(Ship.LocationParams location, int length, Battlefield battlefield) {
 
-        if (checkForAccommodation( length,location)) if (checkForCollisions(battlefield, location, length))  return true;
+        if (checkForAccommodation(length, location)) if (checkForCollisions(battlefield, location, length)) return true;
 
         return false;
     }
 
-    private static boolean checkForAccommodation( int length, Ship.LocationParams location) {
+    private static boolean checkForAccommodation(int length, Ship.LocationParams location) {
         int startPosY = location.getStartCell().getY();
         int startPosX = location.getStartCell().getX();
         switch (location.getDir()) {
@@ -57,7 +56,7 @@ public class ShipChecker {
         return true;
     }
 
-    private static boolean checkForCollisions(Battlefield battlefield,  Ship.LocationParams location, int length) {
+    private static boolean checkForCollisions(Battlefield battlefield, Ship.LocationParams location, int length) {
         //check for free of neighbour cells
         Cell[][] cellTable = battlefield.getTable();
         int startPosY = location.getStartCell().getY();

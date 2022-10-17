@@ -14,7 +14,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void placeShip(int length, int count) {
+    public void placeShipsOfCertainType(int length, int count) {
         System.out.println("Place " + length + "-deck ship ");
         int iteration = 0;
         while (iteration < count) {
@@ -26,7 +26,7 @@ public class HumanPlayer extends Player {
     @Override
     public boolean shoot() {
         Coordinate coordinateOfShot = provider.coordinateOfShoot();
-        return enemyBattlefield.getShot(enemyBattlefield.getCell(coordinateOfShot.getX(), coordinateOfShot.getY()));
+        return getEnemyBattlefield().getShot(getEnemyBattlefield().getCell(coordinateOfShot.getX(), coordinateOfShot.getY()));
 
     }
 }

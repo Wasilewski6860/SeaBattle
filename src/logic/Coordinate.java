@@ -1,6 +1,6 @@
 package logic;
 
-public class Coordinate{
+public class Coordinate {
 
     private final int x;
     private final int y;
