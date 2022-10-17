@@ -29,7 +29,7 @@ public class CLI {
         if (game.getPlayer2().isWinner()) System.out.println("Congratulations! You win!");
     }
 
-    private static void printField(Battlefield battlefield, boolean isWarFogActive) {
+    public static void printField(Battlefield battlefield, boolean isWarFogActive) {
         System.out.println();
         int col=0;
         System.out.print("  ");

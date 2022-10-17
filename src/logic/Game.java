@@ -42,7 +42,7 @@ public class Game {
                 }
                 else {
                     player2.placeShips();
-                    currentTurn=TURN.SECOND_PLAYER_TURN;
+                    currentTurn=TURN.FIRST_PLAYER_TURN;
                     currentState = GAME_STATE.SHOOTING;
                     return;
                 }
@@ -76,7 +76,7 @@ public class Game {
     }
 
     public  Player getPlayer2() {
-        return this.player1;
+        return this.player2;
     }
 
 }

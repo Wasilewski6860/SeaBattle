@@ -29,4 +29,6 @@ public class HumanPlayer extends Player {
         return getEnemyBattlefield().getShot(getEnemyBattlefield().getCell(coordinateOfShot.getX(), coordinateOfShot.getY()));
 
     }
+
+
 }

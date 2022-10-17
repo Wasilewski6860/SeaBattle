@@ -46,4 +46,8 @@ public abstract class Player {
     public Battlefield getEnemyBattlefield() {
         return enemyBattlefield;
     }
+
+    public void setProvider(TurnProvider provider) {
+        this.provider = provider;
+    }
 }

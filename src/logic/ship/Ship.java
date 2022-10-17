@@ -11,8 +11,8 @@ import logic.ship.ShipConstants.DIRECTION;
 public class Ship {
 
     public static class LocationParams {
-        ShipConstants.DIRECTION dir;
-        Cell startCell;
+       public ShipConstants.DIRECTION dir;
+       public Cell startCell;
 
         public LocationParams(ShipConstants.DIRECTION dir, Cell startCell) {
             this.dir = dir;
@@ -41,6 +41,7 @@ public class Ship {
         shipBody = new Cell[length];
         hp = length;
         shipBattlefield = battlefield;
+        this.location=location;
 
         Cell[][] cellTable = shipBattlefield.getTable();
 
@@ -102,6 +103,14 @@ public class Ship {
 
     public List<Cell> getBorders() {
         return borders;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public LocationParams getLocation() {
+        return location;
     }
 
     public void setBorders(List<Cell> borders) {

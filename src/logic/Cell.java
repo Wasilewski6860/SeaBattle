@@ -1,11 +1,17 @@
 package logic;
 
+import graphic.DrawUtils;
 import graphic.Drawable;
 
 import java.awt.*;
 import logic.ship.Ship;
 
-public class Cell  {
+public class Cell implements Drawable  {
+
+    @Override
+    public void draw(Graphics2D graphics2D, boolean isWarfog) {
+        DrawUtils.drawCell(graphics2D,this,isWarfog);
+    }
 
     public enum typeOfCell {
         SHELLED,
@@ -72,4 +78,6 @@ public class Cell  {
     public void setType(typeOfCell type) {
         this.type = type;
     }
+
+
 }
