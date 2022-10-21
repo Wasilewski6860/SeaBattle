@@ -5,6 +5,7 @@ import logic.Battlefield;
 import logic.Cell;
 import logic.Game;
 import logic.TurnProviders.HumanGUITurnProvider;
+import logic.players.HumanGUIPlayer;
 import logic.players.HumanPlayer;
 import logic.players.Player;
 import logic.players.ai.NormalAI;
@@ -15,75 +16,65 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class DrawPanel extends JPanel {
-   public Game game;
+public class DrawPanel extends JPanel implements KeyListener{
+    public Game game;
     boolean isWarFog;
-  public ShipConstants.DIRECTION dir;
+    public ShipConstants.DIRECTION dir = ShipConstants.DIRECTION.TOP;
     public int x;
     public int y;
-    public boolean canReadXnY;
-    public boolean canReadDir;
-    public JTextField dirField;
+    //public JTextField dirField;
     public JButton addButton = new JButton("place");
+    public Player currentPlayer;
+
+
 
     public DrawPanel(Game game) {
-        canReadXnY = false;
-        canReadDir= false;
-        this.game = game;
-        Player player = game.getPlayer1();
-        player.setProvider(new HumanGUITurnProvider(player,this));
-        player.placeShips();
-        CLI.printField(player.getPlayerBattlefield(),false);
+        //canReadXnY = false;
+        //canReadDir= false;
+        this.game=game;
+        setSize(20*DrawUtils.CELL_HORIZONTAL_SIZE,10*DrawUtils.CELL_HORIZONTAL_SIZE);
+
         isWarFog=false;
 
-        dirField = new JTextField();
-        dirField.setPreferredSize(new Dimension(100,20));
-        add(dirField);
-        addButton.setSize(100,50);
-        add(addButton);
+        //dirField = new JTextField();
+        //dirField.setPreferredSize(new Dimension(100,20));
+        //add(dirField);
+       // addButton.setSize(100,50);
+       // add(addButton);
 
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dir = switch (dirField.getText()) {
-                    case "left" -> ShipConstants.DIRECTION.LEFT;
-                    case "top" -> ShipConstants.DIRECTION.TOP;
-                    case "bottom" -> ShipConstants.DIRECTION.BOTTOM;
-                    default -> ShipConstants.DIRECTION.RIGHT;
-                };
 
+                repaint();
             }
         });
 
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if (e.getKeyCode()==KeyEvent.VK_P){
-
-                }
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
-            }
-        });
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                //  int x = dp.x/ DrawUtils.CELL_HORIZONTAL_SIZE;
+                //  int y = dp.y/ DrawUtils.CELL_VERTICAL_SIZE;
                 x=e.getX();
                 y=e.getY();
+                int xSc = x/DrawUtils.CELL_HORIZONTAL_SIZE;
+                if (game.currentState== Game.GAME_STATE.SHOOTING){
+                    System.out.println("Shhoting phase");
+                    game.turn();
+                    System.out.println("Shhoting phase");
+                }
+                System.out.println(xSc);
+                //   System.out.println(x/ DrawUtils.CELL_HORIZONTAL_SIZE+" "+y/ DrawUtils.CELL_VERTICAL_SIZE);
+                repaint();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
                 x=e.getX();
                 y=e.getY();
+                game.turn();
+                //   System.out.println(x/ DrawUtils.CELL_HORIZONTAL_SIZE+" "+y/ DrawUtils.CELL_VERTICAL_SIZE);
+                //  repaint();
             }
 
             @Override
@@ -118,22 +109,11 @@ public class DrawPanel extends JPanel {
         });
     }
 
-    public void play(){
-        game.nextTurn();
-        game.nextTurn();
-        while (game.getWinner()==null){
-            game.nextTurn();
-            repaint();
-        }
-        if (game.getPlayer1().isWinner()) System.out.println("You lose");
-        if (game.getPlayer2().isWinner()) System.out.println("Congratulations! You win!");
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
-        for (int i=0;i<game.getPlayer1().getPlayerBattlefield().getTable().length;i++){
-            for (int j=0;j<game.getPlayer1().getPlayerBattlefield().getTable()[i].length;j++){
-                game.getPlayer1().getPlayerBattlefield().getTable()[i][j].draw((Graphics2D) g,isWarFog);
+        for (int i=0;i<currentPlayer.getPlayerBattlefield().getTable().length;i++){
+            for (int j=0;j<currentPlayer.getPlayerBattlefield().getTable()[i].length;j++){
+                currentPlayer.getPlayerBattlefield().getTable()[i][j].draw((Graphics2D) g,isWarFog);
             }
         }
 //        for (Cell[] cellRow : player.getPlayerBattlefield().getTable()){
@@ -141,5 +121,43 @@ public class DrawPanel extends JPanel {
 //                cell.draw((Graphics2D) g,isWarFog);
 //            }
 //        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("Pressed ");
+        if ( e.getKeyCode() == KeyEvent.VK_W ){
+            dir = ShipConstants.DIRECTION.TOP;
+            System.out.println("Dir is top");
+        }
+        if (e.getKeyCode()==KeyEvent.VK_S){
+            dir = ShipConstants.DIRECTION.BOTTOM;
+            System.out.println("Dir is bottom");
+        }
+        if (e.getKeyCode()==KeyEvent.VK_D){
+            dir = ShipConstants.DIRECTION.RIGHT;
+            System.out.println("Dir is right");
+        }
+        if (e.getKeyCode()==KeyEvent.VK_A){
+            dir = ShipConstants.DIRECTION.LEFT ;
+            System.out.println("Dir is left");
+        }
+        if (e.getKeyCode()==KeyEvent.VK_ENTER){
+            //if (game.currentState== Game.GAME_STATE.PLACING) {
+                //System.out.println("We are placing");
+                game.turn();
+            //}
+        }
+        repaint();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

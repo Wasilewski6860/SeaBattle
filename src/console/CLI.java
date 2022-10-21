@@ -12,19 +12,24 @@ import java.util.Scanner;
 
 public class CLI {
 
-   private Game game;
+    private Game game;
 
     public CLI() {
         game= new Game();
     }
 
     public void play(){
-        game.nextTurn();
-        game.nextTurn();
+
         while (game.getWinner()==null){
-            game.nextTurn();
+            game.turn();
             printScreen();
         }
+//        game.nextTurn();
+//        game.nextTurn();
+//        while (game.getWinner()==null){
+//            game.nextTurn();
+//            printScreen();
+//        }
         if (game.getPlayer1().isWinner()) System.out.println("You lose");
         if (game.getPlayer2().isWinner()) System.out.println("Congratulations! You win!");
     }

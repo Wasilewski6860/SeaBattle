@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Finally working CLI">
-      <change afterPath="$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" afterDir="false" />
+    <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Started working with drawing">
+      <change afterPath="$PROJECT_DIR$/src/logic/players/HumanGUIPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/console/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/console/CLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Drawable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/players/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/HumanPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/ship/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/ship/Ship.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,15 +60,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Docs/SeaBattle-np"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Docs/SeaBattle-np&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -98,7 +95,9 @@
       <workItem from="1665675556283" duration="16434000" />
       <workItem from="1665735590368" duration="23958000" />
       <workItem from="1665817516549" duration="5931000" />
-      <workItem from="1666016797677" duration="18436000" />
+      <workItem from="1666016797677" duration="18531000" />
+      <workItem from="1666287288634" duration="8008000" />
+      <workItem from="1666351761544" duration="11613000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -163,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666020163707</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Started working with drawing">
+      <created>1666041997101</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1666041997101</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +192,8 @@
     <MESSAGE value="Add LocationParams, improved system of placement" />
     <MESSAGE value="Add TurnProvider" />
     <MESSAGE value="Finally working CLI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally working CLI" />
+    <MESSAGE value="Started working with drawing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working with drawing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -200,6 +207,15 @@
           </properties>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/logic/Game.java</url>
+          <line>78</line>
+          <properties class="logic.Game" method="turn">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="5" />
@@ -211,13 +227,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/graphic/DrawPanel.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/logic/Cell.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="9" />
+          <line>152</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

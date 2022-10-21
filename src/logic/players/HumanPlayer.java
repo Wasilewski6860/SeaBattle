@@ -27,7 +27,6 @@ public class HumanPlayer extends Player {
     public boolean shoot() {
         Coordinate coordinateOfShot = provider.coordinateOfShoot();
         return getEnemyBattlefield().getShot(getEnemyBattlefield().getCell(coordinateOfShot.getX(), coordinateOfShot.getY()));
-
     }
 
 

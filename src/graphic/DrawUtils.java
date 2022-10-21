@@ -26,19 +26,19 @@ public class DrawUtils {
                       case 4 ->{
                             switch (cell.getShip().getLocation().getDir()){
                                 case BOTTOM -> {
-                                    System.out.println("Try to place battleship_bottom at "+cell.getX()+" "+cell.getY());
+                                    //System.out.println("Try to place battleship_bottom at "+cell.getX()+" "+cell.getY());
                                     g2d.drawImage(new ImageIcon("assets/battleship/battleship_bottom.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                                 }
                                 case RIGHT -> {
-                                    System.out.println("Try to place battleship_right at "+cell.getX()+" "+cell.getY());
+                                    //System.out.println("Try to place battleship_right at "+cell.getX()+" "+cell.getY());
                                     g2d.drawImage(new ImageIcon("assets/battleship/battleship_right.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                                 }
                                 case LEFT -> {
-                                    System.out.println("Try to place battleship_left at "+cell.getX()+" "+cell.getY());
+                                    //System.out.println("Try to place battleship_left at "+cell.getX()+" "+cell.getY());
                                     g2d.drawImage(new ImageIcon("assets/battleship/battleship_left.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                                 }
                                 case TOP -> {
-                                    System.out.println("Try to place battleship_top at "+cell.getX()+" "+cell.getY());
+                                    //System.out.println("Try to place battleship_top at "+cell.getX()+" "+cell.getY());
                                     g2d.drawImage(new ImageIcon("assets/battleship/battleship_top.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                                 }
                             }
@@ -46,19 +46,19 @@ public class DrawUtils {
                       case 3 ->{
                           switch (cell.getShip().getLocation().getDir()){
                               case BOTTOM -> {
-                                  System.out.println("Try to place cruiser_bottom at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place cruiser_bottom at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/cruiser/cruiser_bottom.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                               case RIGHT -> {
-                                  System.out.println("Try to place cruiser_right at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place cruiser_right at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/cruiser/cruiser_right.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                               case LEFT -> {
-                                  System.out.println("Try to place cruiser_left at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place cruiser_left at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/cruiser/cruiser_left.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                               case TOP -> {
-                                  System.out.println("Try to place cruiser_top at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place cruiser_top at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/cruiser/cruiser_top.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                           }
@@ -67,19 +67,19 @@ public class DrawUtils {
 
                           switch (cell.getShip().getLocation().getDir()){
                               case BOTTOM -> {
-                                  System.out.println("Try to place destroyer_bottom at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place destroyer_bottom at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/destroyer/destroyer_bottom.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                               case RIGHT -> {
-                                  System.out.println("Try to place destroyer_right at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place destroyer_right at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/destroyer/destroyer_right.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                               case LEFT -> {
-                                  System.out.println("Try to place destroyer_left at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place destroyer_left at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/destroyer/destroyer_left.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                               case TOP -> {
-                                  System.out.println("Try to place destroyer_top at "+cell.getX()+" "+cell.getY());
+                                  //System.out.println("Try to place destroyer_top at "+cell.getX()+" "+cell.getY());
                                   g2d.drawImage(new ImageIcon("assets/destroyer/destroyer_top.png").getImage() , cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
                               }
                           }
@@ -120,15 +120,15 @@ public class DrawUtils {
               }
             }
             case SHELLED -> {
-                System.out.println("Try to place shelled at "+cell.getX()+" "+cell.getY());
+                //System.out.println("Try to place shelled at "+cell.getX()+" "+cell.getY());
                  g2d.drawImage(shelled,cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
             }
             case FREE, SHIP_ZONE -> {
-                System.out.println("Try to place free,ship_zone at "+cell.getX()+" "+cell.getY());
+                //System.out.println("Try to place free,ship_zone at "+cell.getX()+" "+cell.getY());
                 g2d.drawImage(free,cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
             }
             case SHIP_WRECKED -> {
-                System.out.println("Try to place ship_wrecked at "+cell.getX()+" "+cell.getY());
+                //System.out.println("Try to place ship_wrecked at "+cell.getX()+" "+cell.getY());
                g2d.drawImage(shipWrecked,cell.getX()* free.getWidth(null), cell.getY()* free.getHeight(null), null);
             }
 
