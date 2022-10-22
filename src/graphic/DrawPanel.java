@@ -58,11 +58,11 @@ public class DrawPanel extends JPanel implements KeyListener{
                 x=e.getX();
                 y=e.getY();
                 int xSc = x/DrawUtils.CELL_HORIZONTAL_SIZE;
-                if (game.currentState== Game.GAME_STATE.SHOOTING){
-                    System.out.println("Shhoting phase");
+               // if (game.currentState== Game.GAME_STATE.SHOOTING){
+                //    System.out.println("Shhoting phase");
                     game.turn();
-                    System.out.println("Shhoting phase");
-                }
+                 //   System.out.println("Shhoting phase");
+               // }
                 System.out.println(xSc);
                 //   System.out.println(x/ DrawUtils.CELL_HORIZONTAL_SIZE+" "+y/ DrawUtils.CELL_VERTICAL_SIZE);
                 repaint();
