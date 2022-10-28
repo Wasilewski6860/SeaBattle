@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +93,11 @@
       <workItem from="1666287288634" duration="8008000" />
       <workItem from="1666351761544" duration="18174000" />
       <workItem from="1666420052674" duration="6066000" />
-      <workItem from="1666426564613" duration="2650000" />
+      <workItem from="1666426564613" duration="5199000" />
+      <workItem from="1666801965093" duration="662000" />
+      <workItem from="1666888465515" duration="821000" />
+      <workItem from="1666958443233" duration="4187000" />
+      <workItem from="1666972033827" duration="3648000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -172,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666373308818</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Started working with drawing">
+      <created>1666429518347</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666429518347</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +241,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/graphic/DrawPanel.java</url>
-          <line>152</line>
+          <line>146</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>

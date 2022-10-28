@@ -16,8 +16,8 @@ public class HumanGUITurnProvider extends TurnProvider{
 
     @Override
     public Ship.LocationParams locationParams() {
-        int x = dp.x/ DrawUtils.CELL_HORIZONTAL_SIZE;
-        int y = dp.y/ DrawUtils.CELL_VERTICAL_SIZE;
+        int x = dp.x;
+        int y = dp.y;
         ShipConstants.DIRECTION dir = dp.dir;
 
         return new Ship.LocationParams(dir,getPlayer().getPlayerBattlefield().getCell(x,y));
@@ -25,8 +25,8 @@ public class HumanGUITurnProvider extends TurnProvider{
 
     @Override
     public Coordinate coordinateOfShoot() {
-        int x = dp.x/ DrawUtils.CELL_HORIZONTAL_SIZE;
-        int y = dp.y/ DrawUtils.CELL_VERTICAL_SIZE;
+        int x = dp.x;
+        int y = dp.y;
         return new Coordinate(x,y);
     }
 }
