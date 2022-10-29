@@ -10,6 +10,30 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Window extends JFrame    {
+
+    /*TODO:
+        Добавить ~ GameController, имеющий доступ к игре и Window. Он будет наследоваться от слушателей мыши/клавиатуры,
+         обрабатывать нажатия мыши/клавиш(возможно и двугих кнопок по типу запуска игры, выборе игрока, сложности и т.п.)
+         !!! Не совершать саму стрельбу, только получать координаты !!! (?)
+         Провайдер хода должен брать координаты из контроллера.
+            .
+           Всторостепенное - добавить собственно человеческий интерфейс, с возможностью выбора типа игрока и т.п.
+           Смена типа игрока, например, должна происходить следующим образом: в !!! GameController !!!  в оверрайде actionPerformed(ActionEvent e)
+           обрабрабатывать тип события и в зависимости от него вызывать game.changePlayer() (или game.setTypeOfPlayer1(), например, неважно).
+            .
+           Конечный GUI будет иметь в качестве полей Game и GameController(а так же две панели-боевых поля и пр.swing элементы,по типу кнопок,вспом.панелей и т.п.).
+           Всем кнопкам, по идее, должен передаваться в качестве actionListener'а GameController
+            .
+           Игровое отрисовываемое поле(сейчас аналог DrawPanel) не должно иметь(опираться на) игрока, его единственное значение - BattleField.
+           Задача поля - только отрисовываться
+            .
+            DrawPanel должен содержать метод, проверяющий, совершен ли по нему тап, или нет(а может и не сам DrawPanel,уточнить).Это должно использоваться в GameController-e
+             для проверки,куда была нажата мышь, и,соответственно,будут меняться значения полей GameController, такие как currentX,currentY,currentField(правое или левое).
+             .
+             Возможен вариант создания класса Button как рисуемого объекта с полями позиции, размера, цвета(может фоновой картинки) и текста(если фоновой картинки нет).
+             Тогда GameController будет обрабатывать попадание мыши по кнопке и вызывать соотв.метод в Game.
+
+     */
     public Window() throws HeadlessException {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
@@ -17,11 +41,10 @@ public class Window extends JFrame    {
         setSize(1980,900);
 
         Game game = new Game();
-        DrawPanel firstPanel = new DrawPanel(game);
-        DrawPanel secondPanel = new DrawPanel(game);
-        game.player1 = new HumanGUIPlayer(game.getPlayer1().getPlayerBattlefield(), game.getPlayer1().getEnemyBattlefield(), firstPanel);
-        firstPanel.currentPlayer= game.player1;
-        secondPanel.currentPlayer = game.player2;
+        DrawPanel firstPanel = new DrawPanel(game.player1);
+        DrawPanel secondPanel = new DrawPanel(game.player2);
+        //game.player1 = new HumanGUIPlayer(game.getPlayer1().getPlayerBattlefield(), game.getPlayer1().getEnemyBattlefield(), firstPanel);
+
         //  DrawPanel tempPanel = new DrawPanel(game);
         firstPanel.setFocusable(true);
         //mainPanel.addKeyListener(mainPanel);
@@ -37,20 +60,24 @@ public class Window extends JFrame    {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (game.getWinner()!=null){
+                    dispose();
+                }
                 int x=e.getX()/DrawUtils.CELL_HORIZONTAL_SIZE;
                 int y=e.getY()/DrawUtils.CELL_VERTICAL_SIZE;
                 if (x>10){
                     x-=10;
-                    secondPanel.x= x;
-                    secondPanel.y= y;
-                    System.out.println("Tap at right panel");
+                    secondPanel.setCurX(x);
+                    secondPanel.setCurX(y);
+                    System.out.println("Tap at right panel at x: "+secondPanel.getCurX()+" y: "+secondPanel.getCurY());
                 }
                 else {
-                    firstPanel.x=x;
-                    firstPanel.y= y;
-                    System.out.println("Tap at left panel");
+                    firstPanel.setCurX(x);
+                    firstPanel.setCurY(y);
+                    System.out.println("Tap at left panel at x: "+firstPanel.getCurX()+" y: "+firstPanel.getCurY());
                 }
                 game.turn();
+               // if (firstPanel.currentPlayer==ga)
                 repaint();
                 System.out.println("Clicked");
             }

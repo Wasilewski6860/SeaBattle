@@ -4,14 +4,15 @@ import graphic.DrawPanel;
 import logic.Battlefield;
 import logic.Coordinate;
 import logic.TurnProviders.HumanGUITurnProvider;
+import newGraphic.GraphicGameController;
 
 public class HumanGUIPlayer extends Player{
 
-    DrawPanel dp;
-    public HumanGUIPlayer(Battlefield playerBattlefield, Battlefield enemyBattlefield, DrawPanel dp) {
+    GraphicGameController gameController;
+    public HumanGUIPlayer(Battlefield playerBattlefield, Battlefield enemyBattlefield, GraphicGameController gameController) {
         super(playerBattlefield, enemyBattlefield);
-        this.dp=dp;
-        provider  = new HumanGUITurnProvider(this,dp);
+        this.gameController=gameController;
+        provider  = new HumanGUITurnProvider(this,gameController);
     }
 
     @Override

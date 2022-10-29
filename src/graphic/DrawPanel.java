@@ -1,38 +1,30 @@
 package graphic;
 
-import console.CLI;
-import logic.Battlefield;
-import logic.Cell;
 import logic.Game;
-import logic.TurnProviders.HumanGUITurnProvider;
-import logic.players.HumanGUIPlayer;
-import logic.players.HumanPlayer;
 import logic.players.Player;
-import logic.players.ai.NormalAI;
-import logic.ship.Ship;
 import logic.ship.ShipConstants;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class DrawPanel extends JPanel
         //implements KeyListener
 {
-    public Game game;
+    //public Game game;
     boolean isWarFog;
     public ShipConstants.DIRECTION dir = ShipConstants.DIRECTION.TOP;
-    public int x;
-    public int y;
+    private int curX;
+    private int curY;
     //public JTextField dirField;
     public Player currentPlayer;
 
 
 
-    public DrawPanel(Game game) {
+    public DrawPanel(Player currentPlayer) {
         //canReadXnY = false;
         //canReadDir= false;
-        this.game=game;
+        //this.game=game;
+        this.currentPlayer = currentPlayer;
         setSize(20*DrawUtils.CELL_HORIZONTAL_SIZE,10*DrawUtils.CELL_HORIZONTAL_SIZE);
 
         isWarFog=false;
@@ -105,6 +97,7 @@ public class DrawPanel extends JPanel
 
     @Override
     protected void paintComponent(Graphics g) {
+
         for (int i=0;i<currentPlayer.getPlayerBattlefield().getTable().length;i++){
             for (int j=0;j<currentPlayer.getPlayerBattlefield().getTable()[i].length;j++){
                 currentPlayer.getPlayerBattlefield().getTable()[i][j].draw((Graphics2D) g,isWarFog);
@@ -154,4 +147,21 @@ public class DrawPanel extends JPanel
 //    public void keyReleased(KeyEvent e) {
 //
 //    }
+
+
+    public int getCurX() {
+        return curX;
+    }
+
+    public void setCurX(int curX) {
+        this.curX = curX;
+    }
+
+    public int getCurY() {
+        return curY;
+    }
+
+    public void setCurY(int curY) {
+        this.curY = curY;
+    }
 }

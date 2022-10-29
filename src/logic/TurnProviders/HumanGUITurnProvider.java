@@ -1,32 +1,32 @@
 package logic.TurnProviders;
 
 import graphic.DrawPanel;
-import graphic.DrawUtils;
 import logic.Coordinate;
 import logic.players.Player;
 import logic.ship.Ship;
 import logic.ship.ShipConstants;
+import newGraphic.GraphicGameController;
 
 public class HumanGUITurnProvider extends TurnProvider{
-    DrawPanel dp;
-    public HumanGUITurnProvider(Player player, DrawPanel drawPanel) {
+    GraphicGameController gameController;
+    public HumanGUITurnProvider(Player player, GraphicGameController gameController) {
         super(player);
-        dp = drawPanel;
+        this.gameController = gameController;
     }
 
     @Override
     public Ship.LocationParams locationParams() {
-        int x = dp.x;
-        int y = dp.y;
-        ShipConstants.DIRECTION dir = dp.dir;
+        int x = gameController.selectedX;
+        int y = gameController.selectedY;
+        ShipConstants.DIRECTION dir = gameController.selectedDir;
 
         return new Ship.LocationParams(dir,getPlayer().getPlayerBattlefield().getCell(x,y));
     }
 
     @Override
     public Coordinate coordinateOfShoot() {
-        int x = dp.x;
-        int y = dp.y;
+        int x = gameController.selectedX;
+        int y = gameController.selectedY;
         return new Coordinate(x,y);
     }
 }

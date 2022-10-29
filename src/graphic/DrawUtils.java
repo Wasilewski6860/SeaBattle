@@ -138,4 +138,20 @@ public class DrawUtils {
     public static Image loadImage(String path) {
         return new ImageIcon(path).getImage();
     }
+
+    //TODO Доработать
+    public static void drawButton(Graphics g, int x, int y, int sizeX, int sizeY, Color color, String text){
+        g.setColor(color);
+        g.fillOval(x-sizeX/2, y-sizeY/2, sizeY, sizeY);
+        g.fillOval(x+sizeX/2-sizeY/2, y-sizeY/2, sizeY, sizeY);
+        g.setColor(Color.BLACK);
+        g.drawOval(x-sizeX/2, y-sizeY/2, sizeY, sizeY);
+        g.drawOval(x+sizeX/2-sizeY/2, y-sizeY/2, sizeY, sizeY);
+        g.setColor(color);
+        g.fillRect(x-sizeX/2+sizeY/2, y-sizeY/2, sizeX-sizeY/2, sizeY);
+        g.setColor(Color.BLACK);
+        g.drawString(text,x+sizeX/4,y+sizeY/4);
+        //drawCenteredString(g, text, new Rectangle(x-sizeX/2+sizeY/2, y-sizeY/2, sizeX-sizeY/2, sizeY), new Font("TimesRoman", Font.PLAIN, sizeX/8));
+
+    }
 }
