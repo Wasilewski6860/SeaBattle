@@ -1,6 +1,4 @@
-package newGraphic;
-
-import graphic.DrawUtils;
+package graphic;
 
 import java.awt.*;
 
@@ -9,6 +7,7 @@ public class Button {
     private int y;
     private int sizeX;
     private int sizeY;
+    //TODO: Сделать поле image
     private Color color;
     private String text;
 
@@ -22,6 +21,7 @@ public class Button {
     }
 
     public void draw(Graphics g) {
+        //TODO: АНалогично рисовать картинку
         DrawUtils.drawButton(g, this.x, this.y, this.sizeX, this.sizeY, this.color, this.text);
     }
     public boolean isBounds(int x,int y){

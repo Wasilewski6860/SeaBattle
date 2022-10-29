@@ -1,7 +1,6 @@
-import console.CLI;
-import graphic.Window;
+
 import logic.Game;
-import newGraphic.GUI;
+import graphic.GUI;
 
 public class Main {
     public static void main(String[] args) {

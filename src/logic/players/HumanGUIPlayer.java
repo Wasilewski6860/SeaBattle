@@ -1,10 +1,10 @@
 package logic.players;
 
-import graphic.DrawPanel;
+
 import logic.Battlefield;
 import logic.Coordinate;
 import logic.TurnProviders.HumanGUITurnProvider;
-import newGraphic.GraphicGameController;
+import graphic.GraphicGameController;
 
 public class HumanGUIPlayer extends Player{
 

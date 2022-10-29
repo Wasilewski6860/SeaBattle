@@ -1,11 +1,11 @@
 package logic.TurnProviders;
 
-import graphic.DrawPanel;
+
 import logic.Coordinate;
 import logic.players.Player;
 import logic.ship.Ship;
 import logic.ship.ShipConstants;
-import newGraphic.GraphicGameController;
+import graphic.GraphicGameController;
 
 public class HumanGUITurnProvider extends TurnProvider{
     GraphicGameController gameController;

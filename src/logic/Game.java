@@ -1,14 +1,12 @@
 package logic;
 
 import logic.players.HumanGUIPlayer;
-import logic.players.HumanPlayer;
 import logic.players.Player;
 
 import logic.players.ai.AIPlayer;
 import logic.players.ai.EasyAI;
 import logic.players.ai.NormalAI;
-import logic.ship.ShipConstants;
-import newGraphic.GraphicGameController;
+import graphic.GraphicGameController;
 
 public class Game {
 

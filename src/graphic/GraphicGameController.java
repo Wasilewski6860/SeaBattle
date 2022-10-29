@@ -1,6 +1,5 @@
-package newGraphic;
+package graphic;
 
-import graphic.DrawUtils;
 import logic.Game;
 import logic.ship.ShipConstants;
 

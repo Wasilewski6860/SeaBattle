@@ -1,12 +1,9 @@
-package newGraphic;
+package graphic;
 
 import logic.Game;
-import logic.players.HumanGUIPlayer;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.util.List;
 
 public class GUI extends JFrame {
 
@@ -33,8 +30,6 @@ public class GUI extends JFrame {
        commandPanel = new CommandPanel();
        commandPanel.setVisible(true);
 
-
-
         JPanel p= (JPanel) getContentPane();
         p.setLayout(new GridLayout(1,2));
         //p.add(commandPanel);
@@ -52,4 +47,17 @@ public class GUI extends JFrame {
         return   secondFieldPanel.getBounds().contains(x,y);
     }
 
+    @Override
+    public void repaint(long time, int x, int y, int width, int height) {
+        super.repaint(time, x, y, width, height);
+        if (game.currentTurn== Game.TURN.FIRST_PLAYER_TURN){
+            firstFieldPanel.isWarFog=false;
+            secondFieldPanel.isWarFog=true;
+        }else {
+            firstFieldPanel.isWarFog=true;
+            secondFieldPanel.isWarFog=false;
+        }
+        firstFieldPanel.repaint();
+        secondFieldPanel.repaint();
+    }
 }
