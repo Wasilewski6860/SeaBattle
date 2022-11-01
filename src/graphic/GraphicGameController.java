@@ -95,6 +95,7 @@ public class GraphicGameController implements MouseListener, KeyListener {
     public void mouseClicked(MouseEvent e) {
 
         if (gui.commandPanel.start.isBounds(e.getX(),e.getY())) {
+
             game.turn();
         }
         if (gui.commandPanel.changeFirstPlayer.isBounds(e.getX(),e.getY())) {

@@ -29,13 +29,17 @@ public class Game {
         }
     }
     public void changeSecondPlayer(GraphicGameController graphicGameController) {
+        System.out.println("You are in changeFirstPlayer method");
         if (player2 instanceof HumanGUIPlayer) {
             player2 = new EasyAI(player2.getPlayerBattlefield(),player2.getEnemyBattlefield());
+            System.out.println("it is easyAi now");
         }else if (player2 instanceof EasyAI) {
             player2 = new NormalAI(player2.getPlayerBattlefield(),player2.getEnemyBattlefield());
+            System.out.println("it is normalAi now");
         }
         else if (player2 instanceof NormalAI) {
             player2 = new HumanGUIPlayer(player2.getPlayerBattlefield(),player2.getEnemyBattlefield(),graphicGameController);
+            System.out.println("it is humangui now");
         }
     }
 

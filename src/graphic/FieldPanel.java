@@ -8,6 +8,8 @@ import java.awt.*;
 public class FieldPanel extends JPanel {
 
     private Battlefield battlefield;
+    private int height;
+    private int width;
     public boolean isWarFog;
 
     public FieldPanel(Battlefield battlefield, boolean isWarFog) {
@@ -28,8 +30,9 @@ public class FieldPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         for (int i=0;i<battlefield.getTable().length;i++){
             for (int j=0;j<battlefield.getTable()[i].length;j++){
-                battlefield.getTable()[i][j].draw((Graphics2D) g,isWarFog);
+                battlefield.getTable()[i][j].draw((Graphics2D) g,getCellWidth(),getCellHeight(), isWarFog);
             }
         }
     }
+
 }

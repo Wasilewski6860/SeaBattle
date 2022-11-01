@@ -8,27 +8,23 @@ public class Button {
     private int sizeX;
     private int sizeY;
     //TODO: Сделать поле image
-    private Color color;
+    private String path;
     private String text;
 
-    public Button(int x, int y, int sizeX, int sizeY, Color color, String text) {
+    public Button(int x, int y, int sizeX, int sizeY, String path) {
         this.x = x;
         this.y = y;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        this.color = color;
-        this.text = text;
+        this.path = path;
     }
 
-    public void draw(Graphics g) {
+    public void draw(Graphics2D g) {
         //TODO: АНалогично рисовать картинку
-        DrawUtils.drawButton(g, this.x, this.y, this.sizeX, this.sizeY, this.color, this.text);
+        DrawUtils.drawButton(g, this.x, this.y, this.sizeX, this.sizeY, this.path);
     }
     public boolean isBounds(int x,int y){
-        return x < getX() + getSizeX() / 2 &&
-                x > getX() - getSizeX() / 2 &&
-                y < getY() + getSizeY() / 2 &&
-                y > getY() - getSizeY() / 2;
+        return x>getX() && x<getX()+getSizeX() && y > getY() && y < getY()+getSizeY();
     }
 
     public int getX() {
@@ -63,12 +59,12 @@ public class Button {
         this.sizeY = sizeY;
     }
 
-    public Color getColor() {
-        return this.color;
+    public String getPath() {
+        return path;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getText() {

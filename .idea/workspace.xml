@@ -3,18 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Should fix human shouting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/DrawPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Window.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/CommandPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/FieldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/FieldPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/players/HumanGUIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/HumanGUIPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newGraphic/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newGraphic/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/CommandPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newGraphic/FieldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/FieldPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newGraphic/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newGraphic/GraphicGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newGraphic/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/ScorePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +37,17 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/console/CLI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/CommandPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/DrawUtils.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/Drawable.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/FieldPanel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/GUI.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Battlefield.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Cell.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Coordinate.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Game.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/logic/players/HumanGUIPlayer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/players/HumanPlayer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/players/Player.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/ship/BorderPlacer.java" root0="FORCE_HIGHLIGHTING" />
@@ -67,7 +69,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Docs/OOP/SeaBattle-master&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/Docs/ComputerGraphic/ORACLE_11G_v11.2.0.2_R2/Task3&quot;
   }
 }</component>
   <component name="RunManager">
@@ -105,7 +107,13 @@
       <workItem from="1666888465515" duration="821000" />
       <workItem from="1666958443233" duration="4187000" />
       <workItem from="1666972033827" duration="11956000" />
-      <workItem from="1667028831861" duration="19471000" />
+      <workItem from="1667028831861" duration="21659000" />
+      <workItem from="1667071355869" duration="6492000" />
+      <workItem from="1667119685941" duration="3163000" />
+      <workItem from="1667129036140" duration="15921000" />
+      <workItem from="1667224812683" duration="1157000" />
+      <workItem from="1667233854962" duration="3028000" />
+      <workItem from="1667294850137" duration="6034000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -205,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667062750529</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Should fix human shouting">
+      <created>1667064176944</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1667064176944</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,13 +260,13 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/logic/Game.java</url>
-          <line>100</line>
-          <properties class="logic.Game" method="turn">
+          <url>file://$PROJECT_DIR$/src/graphic/GUI.java</url>
+          <line>84</line>
+          <properties class="graphic.GUI" method="repaint">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
@@ -266,56 +281,6 @@
           <url>file://$PROJECT_DIR$/src/graphic/DrawPanel.java</url>
           <line>139</line>
           <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>120</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>124</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -9,10 +9,9 @@ import logic.ship.Ship;
 public class Cell implements Drawable  {
 
     @Override
-    public void draw(Graphics2D graphics2D, boolean isWarfog) {
-        DrawUtils.drawCell(graphics2D,this,isWarfog);
+    public void draw(Graphics2D g2d,int width, int height , boolean isWarFog) {
+        DrawUtils.drawCell( g2d, width,  height,  this,  isWarFog);
     }
-
     public enum typeOfCell {
         SHELLED,
         SHIP_WRECKED,
