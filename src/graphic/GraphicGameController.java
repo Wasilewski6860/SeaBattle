@@ -106,8 +106,8 @@ public class GraphicGameController implements MouseListener, KeyListener {
         selectedX=e.getX();
         selectedY=e.getY();
         if (gui.isFirstFieldBounds(selectedX,selectedY)){
-            selectedX=(selectedX-gui.firstFieldPanel.getX())/ DrawUtils.CELL_HORIZONTAL_SIZE;
-            selectedY=(selectedY-gui.firstFieldPanel.getY())/DrawUtils.CELL_VERTICAL_SIZE;
+            selectedX=(selectedX-gui.firstFieldPanel.getX())/ gui.firstFieldPanel.getCellWidth();
+            selectedY=(selectedY-gui.firstFieldPanel.getY())/gui.firstFieldPanel.getCellHeight();
             game.turn();
             System.out.println("Tap at "+selectedX+" "+selectedY+" at fb");
             System.out.println("e.getX()="+e.getX()+" "+" selectedX-gui.firstFieldPanel.getX()="+
@@ -119,8 +119,8 @@ public class GraphicGameController implements MouseListener, KeyListener {
 
         }
         else if (gui.isSecondFieldBounds(selectedX, selectedY)){
-            selectedX=(selectedX-gui.secondFieldPanel.getX())/ DrawUtils.CELL_HORIZONTAL_SIZE;
-            selectedY=(selectedY-gui.secondFieldPanel.getY())/DrawUtils.CELL_VERTICAL_SIZE;
+            selectedX=(selectedX-gui.secondFieldPanel.getX())/ gui.secondFieldPanel.getCellWidth();
+            selectedY=(selectedY-gui.secondFieldPanel.getY())/gui.secondFieldPanel.getCellHeight();
             System.out.println("Tap at "+selectedX+" "+selectedY+" at sb");
             game.turn();
         }

@@ -10,15 +10,23 @@ import java.awt.event.ActionListener;
 public class CommandPanel extends JPanel {
 
     private Game game;
+    private Image backgroundImage;
     private GraphicGameController controller;
     public JButton start;
     public JButton changeFirstPlayer;
     public JButton changeSecondPlayer;
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(backgroundImage,0,0,getWidth(),getHeight(),null);
+    }
+
     public CommandPanel(GraphicGameController graphicGameController, Game game) {
         start=new JButton(new ImageIcon("assets/buttons/start.png"));
         changeFirstPlayer=new JButton(new ImageIcon("assets/buttons/changeFirstPlayer.png"));
         changeSecondPlayer=new JButton(new ImageIcon("assets/buttons/changeSecondPlayer.png"));
+        backgroundImage = new ImageIcon("assents/img/command_panel_background.png").getImage();
         add(start);
         add(changeFirstPlayer);
         add(changeSecondPlayer);
@@ -42,6 +50,8 @@ public class CommandPanel extends JPanel {
                 game.changeSecondPlayer(controller);
             }
         });
+
+
     }
 
 //    @Override

@@ -3,17 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Should fix human shouting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/buttons/changeFirstPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/buttons/changeFirstPlayer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/buttons/changeSecondPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/buttons/changeSecondPlayer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/buttons/start.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/buttons/start.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/CommandPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Drawable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/FieldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/FieldPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Cell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +108,7 @@
       <workItem from="1667224812683" duration="1157000" />
       <workItem from="1667233854962" duration="3028000" />
       <workItem from="1667294850137" duration="23761000" />
+      <workItem from="1667379078472" duration="1603000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -229,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667310613284</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Should fix human shouting">
+      <created>1667379123860</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667379123860</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +276,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
+          <line>93</line>
+          <properties class="graphic.GraphicGameController" method="mouseClicked">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />

@@ -21,17 +21,17 @@ public class FieldPanel extends JPanel {
         return   this.getBounds().contains(x,y);
     }
     public int getCellWidth() {
-        return getPreferredSize().width / battlefield.getTable().length;
+        return getSize().width / battlefield.getTable().length;
     }
 
     public int getCellHeight() {
-        return getPreferredSize().height/ battlefield.getTable().length;
+        return getSize().height/ battlefield.getTable().length;
     }
     @Override
     protected void paintComponent(Graphics g) {
         for (int i=0;i<battlefield.getTable().length;i++){
             for (int j=0;j<battlefield.getTable()[i].length;j++){
-                battlefield.getTable()[i][j].draw((Graphics2D) g, DrawUtils.CELL_VERTICAL_SIZE,DrawUtils.CELL_HORIZONTAL_SIZE, isWarFog);
+                battlefield.getTable()[i][j].draw((Graphics2D) g, getCellWidth(),getCellHeight(), isWarFog);
             }
         }
     }
