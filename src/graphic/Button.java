@@ -11,17 +11,15 @@ public class Button {
     private String path;
     private String text;
 
-    public Button(int x, int y, int sizeX, int sizeY, String path) {
+    public Button(int x, int y,   String path) {
         this.x = x;
         this.y = y;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
         this.path = path;
     }
 
     public void draw(Graphics2D g) {
         //TODO: АНалогично рисовать картинку
-        DrawUtils.drawButton(g, this.x, this.y, this.sizeX, this.sizeY, this.path);
+        DrawUtils.drawButton(g, this);
     }
     public boolean isBounds(int x,int y){
         return x>getX() && x<getX()+getSizeX() && y > getY() && y < getY()+getSizeY();
@@ -78,4 +76,3 @@ public class Button {
 
 
 }
-

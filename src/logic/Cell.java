@@ -9,8 +9,8 @@ import logic.ship.Ship;
 public class Cell implements Drawable  {
 
     @Override
-    public void draw(Graphics2D g2d,int width, int height , boolean isWarFog) {
-        DrawUtils.drawCell( g2d, width,  height,  this,  isWarFog);
+    public void draw(Graphics2D g2d, int width,int height,boolean isWarFog) {
+        DrawUtils.drawCell( g2d,   this,width,height,  isWarFog);
     }
     public enum typeOfCell {
         SHELLED,

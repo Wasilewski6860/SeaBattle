@@ -3,10 +3,7 @@ package graphic;
 import logic.Game;
 import logic.ship.ShipConstants;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 public class GraphicGameController implements MouseListener, KeyListener {
 
@@ -22,6 +19,7 @@ public class GraphicGameController implements MouseListener, KeyListener {
         this.gui = gui;
         selectedX=selectedY=0;
         selectedDir= ShipConstants.DIRECTION.TOP;
+
     }
 
     @Override
@@ -91,17 +89,18 @@ public class GraphicGameController implements MouseListener, KeyListener {
     }
 
 
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (gui.commandPanel.start.isBounds(e.getX(),e.getY())) {
+        if (gui.commandPanel.start.getBounds().contains(e.getX(),e.getY())) {
 
             game.turn();
         }
-        if (gui.commandPanel.changeFirstPlayer.isBounds(e.getX(),e.getY())) {
+        if (gui.commandPanel.changeFirstPlayer.getBounds().contains(e.getX(),e.getY())) {
             game.changeFirstPlayer(this);
         }
-        if (gui.commandPanel.changeSecondPlayer.isBounds(e.getX(),e.getY())) {
+        if (gui.commandPanel.changeSecondPlayer.getBounds().contains(e.getX(),e.getY())) {
             game.changeSecondPlayer(this);
         }
         selectedX=e.getX();

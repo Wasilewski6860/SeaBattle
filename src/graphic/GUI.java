@@ -10,7 +10,8 @@ import java.awt.*;
 
 public class GUI extends JFrame {
 
-    /*TODO
+    /*
+    TODO
     Доработать repaint, а именно момент с туманом войны.
     Доработать GridLayout.
     Разобраться с button.
@@ -27,49 +28,57 @@ public class GUI extends JFrame {
     public GUI(Game game) throws HeadlessException {
         this.game = game;
         this.setSize(1980,680);
+        this.setBackground(Color.RED);
         gameController=new GraphicGameController(game,this);
 
         this.addMouseListener(gameController);
         this.addKeyListener(gameController);
+
         firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false);
         secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false);
 
         //firstFieldPanel.setLayout(null);
         //secondFieldPanel.setLayout(null);
 
-       commandPanel = new CommandPanel();
-       commandPanel.setSize(getWidth(),getHeight()/10);
-       firstFieldPanel.setSize(getWidth()/2,getWidth()/2);
-       secondFieldPanel.setSize(getWidth()/2,getWidth()/2);
+       commandPanel = new CommandPanel(gameController,game);
+       //commandPanel.setSize(1980,1980/10);
+       //firstFieldPanel.setSize(getWidth()/2,getWidth()/2);
+       //secondFieldPanel.setSize(getWidth()/2,getWidth()/2);
+        commandPanel.setFocusable(true);
        commandPanel.setVisible(true);
 
-        setTitle("Sea Battle, Swing version");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        add(commandPanel = new CommandPanel(gameController,game), BorderLayout.NORTH);
+        add(firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false), BorderLayout.WEST);
+        add(secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false), BorderLayout.EAST);
 
+//        setTitle("Sea Battle, Swing version");
+//        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//
+//
+//        JPanel p= (JPanel) getContentPane();
+//         // В области рисования, конечно же
+//
+//        p.setLayout(new GridBagLayout());
+//        GridBagConstraints c = new GridBagConstraints();
+//
+//        c.weightx = 1;
+//
+//// The same for rows
+//        c.weighty = 1;
+//
+//// Let the buttons to occupy entire cells
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//
+//        c.gridy = 0; // Starting the first row
+//        c.gridwidth = 2;
+//        p.add(commandPanel, c);
+//        c.fill = GridBagConstraints.BOTH;
+//        c.gridwidth = 1;
+//        c.gridy++; // Switching to next row
+//        p.add(firstFieldPanel,c);
+//        p.add(secondFieldPanel, c);
 
-        JPanel p= (JPanel) getContentPane();
-
-
-        p.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        c.weightx = 1;
-
-// The same for rows
-        c.weighty = 1;
-
-// Let the buttons to occupy entire cells
-        c.fill = GridBagConstraints.HORIZONTAL;
-
-        c.gridy = 0; // Starting the first row
-        c.gridwidth = 2;
-        p.add(commandPanel, c);
-        c.fill = GridBagConstraints.BOTH;
-        c.gridwidth = 1;
-        c.gridy++; // Switching to next row
-        p.add(firstFieldPanel,c);
-        p.add(secondFieldPanel, c);
-
+        //setSize(commandPanel.getSize().width,commandPanel.getHeight()+firstFieldPanel.getHeight());
         this.setFocusable(true);
         this.setVisible(true);
     }
