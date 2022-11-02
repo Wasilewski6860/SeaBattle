@@ -26,7 +26,7 @@ public class CommandPanel extends JPanel {
         start=new JButton(new ImageIcon("assets/buttons/start.png"));
         changeFirstPlayer=new JButton(new ImageIcon("assets/buttons/changeFirstPlayer.png"));
         changeSecondPlayer=new JButton(new ImageIcon("assets/buttons/changeSecondPlayer.png"));
-        backgroundImage = new ImageIcon("assents/img/command_panel_background.png").getImage();
+        backgroundImage = new ImageIcon("assets/img/command_panel_background.png").getImage();
         add(start);
         add(changeFirstPlayer);
         add(changeSecondPlayer);

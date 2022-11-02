@@ -18,8 +18,10 @@ public class GUI extends JFrame {
 
 
      */
+    private Image backgroundImage;
     private Game game;
     private GraphicGameController gameController;
+    private ImagePanel ip;
 
     public FieldPanel firstFieldPanel;
     public FieldPanel secondFieldPanel;
@@ -30,9 +32,13 @@ public class GUI extends JFrame {
         this.setSize(1980,680);
         this.setBackground(Color.RED);
         gameController=new GraphicGameController(game,this);
+        backgroundImage = new ImageIcon("assets/img/command_panel_background.png").getImage();
 
         this.addMouseListener(gameController);
         this.addKeyListener(gameController);
+
+        ip = new ImagePanel(backgroundImage,getWidth(),getHeight());
+        setContentPane(ip);
 
         firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false);
         secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false);
@@ -47,9 +53,9 @@ public class GUI extends JFrame {
         commandPanel.setFocusable(true);
        commandPanel.setVisible(true);
 
-        add(commandPanel = new CommandPanel(gameController,game), BorderLayout.NORTH);
-        add(firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false), BorderLayout.WEST);
-        add(secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false), BorderLayout.EAST);
+        ip.add(commandPanel = new CommandPanel(gameController,game), BorderLayout.NORTH);
+        ip.add(firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false), BorderLayout.WEST);
+        ip. add(secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false), BorderLayout.EAST);
 
 //        setTitle("Sea Battle, Swing version");
 //        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -106,6 +112,8 @@ public class GUI extends JFrame {
             //else secondFieldPanel.isWarFog=true;
         }
         //commandPanel.setSize(getWidth(),getHeight()/10);
+        ip.setSize(getSize());
+        ip.repaint();
         commandPanel.repaint();
         //firstFieldPanel.setSize(getWidth()/2,getHeight()/2);
         firstFieldPanel.repaint();

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Should fix human shouting">
+      <change afterPath="$PROJECT_DIR$/src/graphic/ImagePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/CommandPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/FieldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/FieldPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,7 @@
       <workItem from="1667224812683" duration="1157000" />
       <workItem from="1667233854962" duration="3028000" />
       <workItem from="1667294850137" duration="23761000" />
-      <workItem from="1667379078472" duration="1603000" />
+      <workItem from="1667379078472" duration="3345000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -229,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667379123860</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Should fix human shouting">
+      <created>1667380930755</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1667380930755</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +277,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/graphic/GUI.java</url>
-          <line>93</line>
+          <line>99</line>
           <properties class="graphic.GUI" method="repaint">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
