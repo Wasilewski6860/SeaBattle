@@ -1,7 +1,6 @@
 package graphic;
 
 import logic.Game;
-import logic.players.ai.AIPlayer;
 import logic.players.ai.EasyAI;
 import logic.players.ai.NormalAI;
 
@@ -21,12 +20,11 @@ public class GUI extends JFrame {
     private Image backgroundImage;
     public Game game;
     private GraphicGameController gameController;
-    private ImagePanel ip;
 
     public FieldPanel firstFieldPanel;
     public FieldPanel secondFieldPanel;
     public CommandPanel commandPanel;
-    public ScorePanel scorePanel;
+    public ControlPanel scorePanel;
 
     public GUI(Game game) throws HeadlessException {
         this.game = game;
@@ -51,7 +49,7 @@ public class GUI extends JFrame {
         //secondFieldPanel.setLayout(null);
 
        commandPanel = new CommandPanel();
-       scorePanel = new ScorePanel();
+       scorePanel = new ControlPanel();
        //commandPanel.setSize(1980,1980/10);
        //firstFieldPanel.setSize(getWidth()/2,getWidth()/2);
        //secondFieldPanel.setSize(getWidth()/2,getWidth()/2);
@@ -114,16 +112,16 @@ public class GUI extends JFrame {
     @Override
     public void repaint(long time, int x, int y, int width, int height) {
         super.repaint(time, x, y, width, height);
-        if (game.currentTurn== Game.TURN.FIRST_PLAYER_TURN){
-            if (!(game.player2 instanceof EasyAI) && !(game.player2 instanceof NormalAI))firstFieldPanel.isWarFog=false;
+        if (game.getCurrentTurn()== Game.TURN.FIRST_PLAYER_TURN){
+            if (!(game.getPlayer2() instanceof EasyAI) && !(game.getPlayer2() instanceof NormalAI))firstFieldPanel.isWarFog=false;
             //else firstFieldPanel.isWarFog=true;
-           if (!(game.player1 instanceof EasyAI) && !(game.player1 instanceof NormalAI))secondFieldPanel.isWarFog=true;
+           if (!(game.getPlayer1() instanceof EasyAI) && !(game.getPlayer1() instanceof NormalAI))secondFieldPanel.isWarFog=true;
            //else secondFieldPanel.isWarFog=false;
         }
         else {
-            if (!(game.player2 instanceof EasyAI) && !(game.player2 instanceof NormalAI))firstFieldPanel.isWarFog=true;
+            if (!(game.getPlayer2() instanceof EasyAI) && !(game.getPlayer2() instanceof NormalAI))firstFieldPanel.isWarFog=true;
             //else firstFieldPanel.isWarFog=false;
-            if (!(game.player1 instanceof EasyAI) && !(game.player1 instanceof NormalAI))secondFieldPanel.isWarFog=false;
+            if (!(game.getPlayer1() instanceof EasyAI) && !(game.getPlayer1() instanceof NormalAI))secondFieldPanel.isWarFog=false;
             //else secondFieldPanel.isWarFog=true;
         }
         //commandPanel.setSize(getWidth(),getHeight()/10);
@@ -132,44 +130,13 @@ public class GUI extends JFrame {
         commandPanel.repaint();
         scorePanel.repaint();
         //firstFieldPanel.setSize(getWidth()/2,getHeight()/2);
+        firstFieldPanel.setBattlefield(game.getPlayer1().getPlayerBattlefield());
         firstFieldPanel.repaint();
         //secondFieldPanel.setSize(getWidth()/2,getHeight()/2);
+        secondFieldPanel.setBattlefield(game.getPlayer2().getPlayerBattlefield());
         secondFieldPanel.repaint();
         System.out.println(getWidth()+" "+getHeight());
     }
 
-    public void newGame(){
-        game=new Game();
 
-        this.setSize(1912 ,950);
-        //setResizable(false);
-        gameController=new GraphicGameController(game,this);
-        backgroundImage = new ImageIcon("assets/img/command_panel_background.png").getImage();
-
-        this.addMouseListener(gameController);
-        this.addKeyListener(gameController);
-
-        firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false);
-        secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false);
-
-        commandPanel = new CommandPanel();
-        scorePanel = new ScorePanel();
-        commandPanel.setFocusable(true);
-        commandPanel.setVisible(true);
-        scorePanel.setFocusable(true);
-        scorePanel.setVisible(true);
-
-        add(commandPanel = new CommandPanel(), BorderLayout.NORTH);
-        add(firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false), BorderLayout.WEST);
-        add(secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false), BorderLayout.CENTER);
-        add(scorePanel,BorderLayout.SOUTH);
-
-        this.setFocusable(true);
-        this.setVisible(true);
-
-        repaint();
-    }
-    public void setGame(Game game) {
-        this.game=game;
-    }
 }

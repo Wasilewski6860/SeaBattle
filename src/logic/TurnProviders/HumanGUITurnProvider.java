@@ -16,17 +16,17 @@ public class HumanGUITurnProvider extends TurnProvider{
 
     @Override
     public Ship.LocationParams locationParams() {
-        int x = gameController.selectedX;
-        int y = gameController.selectedY;
-        ShipConstants.DIRECTION dir = gameController.selectedDir;
+        int x = gameController.getSelectedX();
+        int y = gameController.getSelectedY();
+        ShipConstants.DIRECTION dir = gameController.getSelectedDir();
 
         return new Ship.LocationParams(dir,getPlayer().getPlayerBattlefield().getCell(x,y));
     }
 
     @Override
     public Coordinate coordinateOfShoot() {
-        int x = gameController.selectedX;
-        int y = gameController.selectedY;
+        int x = gameController.getSelectedX();
+        int y = gameController.getSelectedY();
         return new Coordinate(x,y);
     }
 }

@@ -41,13 +41,9 @@ public abstract class Player {
                 this.placeShip(this.provider.locationParams(), ShipConstants.BATTLESHIP_LENGTH);
                 return false;
             }
-            case 1 ->{
+            case 1, 2 ->{
                 this.placeShip(this.provider.locationParams(), ShipConstants.CRUISER_LENGTH);
                 return false;
-            }
-            case 2 ->{
-                this.placeShip(this.provider.locationParams(), ShipConstants.CRUISER_LENGTH);
-                return true;
             }
             case 3, 4, 5 ->{
                 this.placeShip(this.provider.locationParams(), ShipConstants.DESTROYER_LENGTH);

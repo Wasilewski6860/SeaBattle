@@ -2,20 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Should fix human shouting">
-      <change afterPath="$PROJECT_DIR$/src/graphic/InfoPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/buttons/changeFirstPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/changeFirstPlayer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/buttons/changeSecondPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/changeSecondPlayer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/arrow_keyboard_up_down_left_right_game_console-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/arrow_keyboard_up_down_left_right_game_console-512.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/changeFirstPlayer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/changeSecondPlayer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/directional-arrow-icons-modern-vector-buttons-8678494.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/down.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/buttons/down.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/left.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/buttons/left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/pngegg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/buttons/right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/simple_button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/buttons/up.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/buttons/up.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Button.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/CommandPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Drawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/FieldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/FieldPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/ImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/ImagePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/ScorePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/InfoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/ControlPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/TurnProviders/HumanGUITurnProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,13 +52,12 @@
     <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/console/CLI.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/CommandPanel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/ControlPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/DrawUtils.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/Drawable.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/FieldPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/GUI.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/GraphicGameController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/graphic/ImagePanel.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/graphic/ScorePanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Battlefield.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Cell.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Coordinate.java" root0="FORCE_HIGHLIGHTING" />
@@ -124,7 +132,7 @@
       <workItem from="1667294850137" duration="23761000" />
       <workItem from="1667379078472" duration="4439000" />
       <workItem from="1667402236932" duration="17844000" />
-      <workItem from="1667459897819" duration="11543000" />
+      <workItem from="1667459897819" duration="16524000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -259,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667382883817</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Should fix human shouting">
+      <created>1667488357537</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1667488357537</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

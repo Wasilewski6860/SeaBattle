@@ -131,14 +131,4 @@ public class DrawUtils {
     public static Image loadImage(String path) {
         return new ImageIcon(path).getImage();
     }
-
-    //TODO Доработать
-    public static void drawButton(Graphics2D g, Button button ){
-
-        g.drawImage(new ImageIcon(button.getPath()).getImage(),button.getX(), button.getY(), null);
-        button.setSizeX(new ImageIcon(button.getPath()).getImage().getWidth(null));
-        button.setSizeX(new ImageIcon(button.getPath()).getImage().getHeight(null));
-        //drawCenteredString(g, text, new Rectangle(x-sizeX/2+sizeY/2, y-sizeY/2, sizeX-sizeY/2, sizeY), new Font("TimesRoman", Font.PLAIN, sizeX/8));
-
-    }
 }

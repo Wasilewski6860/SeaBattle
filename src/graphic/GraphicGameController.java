@@ -10,16 +10,15 @@ public class GraphicGameController implements MouseListener, KeyListener {
     public Game game;
     public GUI gui;
 
-    public int selectedX;
-    public int selectedY;
-    public ShipConstants.DIRECTION selectedDir;
+    private int selectedX;
+    private int selectedY;
+    private ShipConstants.DIRECTION selectedDir;
 
     public GraphicGameController(Game game, GUI gui) {
         this.game = game;
         this.gui = gui;
         selectedX=selectedY=0;
         selectedDir= ShipConstants.DIRECTION.TOP;
-
     }
 
     @Override
@@ -95,15 +94,15 @@ public class GraphicGameController implements MouseListener, KeyListener {
 
 
 
-        if (gui.commandPanel.start.getBounds().contains(e.getX(),e.getY())) {
+        if (gui.commandPanel.getNewGame().getBounds().contains(e.getX(),e.getY())) {
 
             game.newGameParty();
 
         }
-        if (gui.commandPanel.changeFirstPlayer.getBounds().contains(e.getX(),e.getY())) {
+        if (gui.commandPanel.getChangeFirstPlayer().getBounds().contains(e.getX(),e.getY())) {
             game.changeFirstPlayer(this);
         }
-        if (gui.commandPanel.changeSecondPlayer.getBounds().contains(e.getX(),e.getY())) {
+        if (gui.commandPanel.getChangeSecondPlayer().getBounds().contains(e.getX(),e.getY())) {
             game.changeSecondPlayer(this);
         }
         if (gui.scorePanel.isBounds(gui.scorePanel.up,e.getX(),e.getY())) {
@@ -145,7 +144,7 @@ public class GraphicGameController implements MouseListener, KeyListener {
             System.out.println("Tap at "+selectedX+" "+selectedY+" at sb");
             game.turn();
         }
-        gui.scorePanel.infoLabel.update(game);
+        gui.scorePanel.infoLabel.update(game,this);
 
         gui.repaint();
 
@@ -170,5 +169,45 @@ public class GraphicGameController implements MouseListener, KeyListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public GUI getGui() {
+        return gui;
+    }
+
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
+
+    public int getSelectedX() {
+        return selectedX;
+    }
+
+    public void setSelectedX(int selectedX) {
+        this.selectedX = selectedX;
+    }
+
+    public int getSelectedY() {
+        return selectedY;
+    }
+
+    public void setSelectedY(int selectedY) {
+        this.selectedY = selectedY;
+    }
+
+    public ShipConstants.DIRECTION getSelectedDir() {
+        return selectedDir;
+    }
+
+    public void setSelectedDir(ShipConstants.DIRECTION selectedDir) {
+        this.selectedDir = selectedDir;
     }
 }

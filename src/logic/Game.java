@@ -52,17 +52,16 @@ public class Game {
         FIRST_PLAYER_TURN,
         SECOND_PLAYER_TURN
     }
-    public GAME_STATE currentState;
-    public TURN currentTurn;
-    public boolean isWaiting = false;
-    protected  Battlefield firstPlayerField;
-    protected  Battlefield secondPlayerField;
+    private GAME_STATE currentState;
+    private TURN currentTurn;
+    private   Battlefield firstPlayerField;
+    private   Battlefield secondPlayerField;
 
-    public  Player player1;
-    public  Player player2;
+    private   Player player1;
+    private   Player player2;
 
-    public int firstPlayersVictories=0;
-    public int secondPlayersVictories=0;
+    private int firstPlayersVictories=0;
+    private int secondPlayersVictories=0;
 
     public Game() {
         firstPlayerField = new Battlefield();
@@ -75,6 +74,9 @@ public class Game {
     }
 
     public void newGameParty(){
+        if (currentState== GAME_STATE.FINISH){
+            if (player1.isWinner()) firstPlayersVictories++; else secondPlayersVictories++;
+        }
         firstPlayerField = new Battlefield();
         secondPlayerField = new Battlefield();
         player1 = new NormalAI(firstPlayerField, secondPlayerField);
@@ -160,9 +162,7 @@ public class Game {
                     }
                 }
             }
-            case FINISH -> {
-                if (player1.isWinner()) firstPlayersVictories++; else secondPlayersVictories++;
-            }
+
         }
     }
 
@@ -183,4 +183,59 @@ public class Game {
         return this.player2;
     }
 
+    public GAME_STATE getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(GAME_STATE currentState) {
+        this.currentState = currentState;
+    }
+
+    public TURN getCurrentTurn() {
+        return currentTurn;
+    }
+
+    public void setCurrentTurn(TURN currentTurn) {
+        this.currentTurn = currentTurn;
+    }
+
+    public Battlefield getFirstPlayerField() {
+        return firstPlayerField;
+    }
+
+    public void setFirstPlayerField(Battlefield firstPlayerField) {
+        this.firstPlayerField = firstPlayerField;
+    }
+
+    public Battlefield getSecondPlayerField() {
+        return secondPlayerField;
+    }
+
+    public void setSecondPlayerField(Battlefield secondPlayerField) {
+        this.secondPlayerField = secondPlayerField;
+    }
+
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
+    }
+
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
+    }
+
+    public int getFirstPlayersVictories() {
+        return firstPlayersVictories;
+    }
+
+    public void setFirstPlayersVictories(int firstPlayersVictories) {
+        this.firstPlayersVictories = firstPlayersVictories;
+    }
+
+    public int getSecondPlayersVictories() {
+        return secondPlayersVictories;
+    }
+
+    public void setSecondPlayersVictories(int secondPlayersVictories) {
+        this.secondPlayersVictories = secondPlayersVictories;
+    }
 }
