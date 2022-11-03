@@ -3,7 +3,7 @@ package graphic;
 import javax.swing.*;
 import java.awt.*;
 
-class ImagePanel extends JComponent {
+class ImagePanel extends JPanel {
     private Image image;
     private int width;
     private int height;

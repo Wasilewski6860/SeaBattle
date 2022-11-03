@@ -46,6 +46,7 @@ public class Game {
     public enum GAME_STATE{
         PLACING,
         SHOOTING,
+        FINISH
     }
     public enum TURN{
         FIRST_PLAYER_TURN,
@@ -60,11 +61,23 @@ public class Game {
     public  Player player1;
     public  Player player2;
 
+    public int firstPlayersVictories=0;
+    public int secondPlayersVictories=0;
+
     public Game() {
         firstPlayerField = new Battlefield();
         secondPlayerField = new Battlefield();
-       // player1 = new HumanPlayer(firstPlayerField, secondPlayerField);
-         player1 = new NormalAI(firstPlayerField, secondPlayerField);
+        // player1 = new HumanPlayer(firstPlayerField, secondPlayerField);
+        player1 = new NormalAI(firstPlayerField, secondPlayerField);
+        player2 = new NormalAI(secondPlayerField, firstPlayerField);
+        currentState = GAME_STATE.PLACING;
+        currentTurn = TURN.FIRST_PLAYER_TURN;
+    }
+
+    public void newGameParty(){
+        firstPlayerField = new Battlefield();
+        secondPlayerField = new Battlefield();
+        player1 = new NormalAI(firstPlayerField, secondPlayerField);
         player2 = new NormalAI(secondPlayerField, firstPlayerField);
         currentState = GAME_STATE.PLACING;
         currentTurn = TURN.FIRST_PLAYER_TURN;
@@ -122,24 +135,33 @@ public class Game {
                     } else if (player2.placeShip()) {
                         currentTurn = TURN.FIRST_PLAYER_TURN;
                         currentState = GAME_STATE.SHOOTING;
-                }
+                    }
                 }
             }
             case SHOOTING -> {
                 switch (currentTurn){
                     case FIRST_PLAYER_TURN -> {
-                        if (player1.shoot() && !player1.isWinner()){
-                            if (player1 instanceof AIPlayer)   turn();
-                        }
-                        else currentTurn=TURN.SECOND_PLAYER_TURN;
+                        if (getWinner()==null) {
+                            if (player1.shoot()) {
+                                if (player1 instanceof AIPlayer) turn();
+                            }
+                            else currentTurn=TURN.SECOND_PLAYER_TURN;
+                        }else currentState=GAME_STATE.FINISH;
+
                     }
                     case SECOND_PLAYER_TURN -> {
-                        if (player2.shoot()&& !player2.isWinner()){
-                            if (player2 instanceof AIPlayer)   turn();
-                        }
-                        else currentTurn=TURN.FIRST_PLAYER_TURN;
+                        if (getWinner()==null) {
+                            if (player2.shoot()) {
+                                if (player2 instanceof AIPlayer) turn();
+                            }
+                            else currentTurn=TURN.FIRST_PLAYER_TURN;
+                        }else currentState=GAME_STATE.FINISH;
+
                     }
                 }
+            }
+            case FINISH -> {
+                if (player1.isWinner()) firstPlayersVictories++; else secondPlayersVictories++;
             }
         }
     }

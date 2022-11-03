@@ -30,8 +30,8 @@ public abstract class Player {
 
         placeShipsOfCertainType(ShipConstants.BATTLESHIP_LENGTH, Battlefield.BATTLE_SHIPS_COUNT);
         placeShipsOfCertainType(ShipConstants.CRUISER_LENGTH, Battlefield.CRUISERS_COUNT);
-//      placeShip(TYPE_OF_SHIP.DESTROYER, Battlefield.DESTROYERS_COUNT);
-//      placeShip(TYPE_OF_SHIP.TORPEDO_BOAT, Battlefield.TORPEDO_BOATS_COUNT);
+        placeShipsOfCertainType(ShipConstants.DESTROYER_LENGTH, Battlefield.DESTROYERS_COUNT);
+        placeShipsOfCertainType(ShipConstants.TORPEDO_BOAT_LENGTH, Battlefield.TORPEDO_BOATS_COUNT);
     }
 
     public abstract boolean shoot();
@@ -49,14 +49,14 @@ public abstract class Player {
                 this.placeShip(this.provider.locationParams(), ShipConstants.CRUISER_LENGTH);
                 return true;
             }
-//            case 3, 4, 5 ->{
-//                this.placeShip(this.provider.locationParams(), ShipConstants.DESTROYER_LENGTH);
-//                return false;
-//            }
-//            case 6, 7, 8, 9 ->{
-//                this.placeShip(this.provider.locationParams(), ShipConstants.TORPEDO_BOAT_LENGTH);
-//                return false;
-//            }
+            case 3, 4, 5 ->{
+                this.placeShip(this.provider.locationParams(), ShipConstants.DESTROYER_LENGTH);
+                return false;
+            }
+            case 6, 7, 8, 9 ->{
+                this.placeShip(this.provider.locationParams(), ShipConstants.TORPEDO_BOAT_LENGTH);
+                return false;
+            }
             default -> {return true;}
         }
     }

@@ -19,26 +19,30 @@ public class GUI extends JFrame {
 
      */
     private Image backgroundImage;
-    private Game game;
+    public Game game;
     private GraphicGameController gameController;
     private ImagePanel ip;
 
     public FieldPanel firstFieldPanel;
     public FieldPanel secondFieldPanel;
     public CommandPanel commandPanel;
+    public ScorePanel scorePanel;
 
     public GUI(Game game) throws HeadlessException {
         this.game = game;
-        this.setSize(1980,680);
-        this.setBackground(Color.RED);
+
+
+       // /*
+        this.setSize(1912 ,950);
+        //setResizable(false);
         gameController=new GraphicGameController(game,this);
         backgroundImage = new ImageIcon("assets/img/command_panel_background.png").getImage();
 
         this.addMouseListener(gameController);
         this.addKeyListener(gameController);
 
-        ip = new ImagePanel(backgroundImage,getWidth(),getHeight());
-        setContentPane(ip);
+        //ip = new ImagePanel(backgroundImage,getWidth(),getHeight());
+        //setContentPane(ip);
 
         firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false);
         secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false);
@@ -46,16 +50,24 @@ public class GUI extends JFrame {
         //firstFieldPanel.setLayout(null);
         //secondFieldPanel.setLayout(null);
 
-       commandPanel = new CommandPanel(gameController,game);
+       commandPanel = new CommandPanel();
+       scorePanel = new ScorePanel();
        //commandPanel.setSize(1980,1980/10);
        //firstFieldPanel.setSize(getWidth()/2,getWidth()/2);
        //secondFieldPanel.setSize(getWidth()/2,getWidth()/2);
         commandPanel.setFocusable(true);
        commandPanel.setVisible(true);
+        scorePanel.setFocusable(true);
+        scorePanel.setVisible(true);
 
-        ip.add(commandPanel = new CommandPanel(gameController,game), BorderLayout.NORTH);
-        ip.add(firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false), BorderLayout.WEST);
-        ip. add(secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false), BorderLayout.EAST);
+        add(commandPanel = new CommandPanel(), BorderLayout.NORTH);
+        add(firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false), BorderLayout.WEST);
+        add(secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false), BorderLayout.CENTER);
+        add(scorePanel,BorderLayout.SOUTH);
+        // */
+
+
+         /*
 
 //        setTitle("Sea Battle, Swing version");
 //        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -85,6 +97,9 @@ public class GUI extends JFrame {
 //        p.add(secondFieldPanel, c);
 
         //setSize(commandPanel.getSize().width,commandPanel.getHeight()+firstFieldPanel.getHeight());
+
+          */
+
         this.setFocusable(true);
         this.setVisible(true);
     }
@@ -112,12 +127,49 @@ public class GUI extends JFrame {
             //else secondFieldPanel.isWarFog=true;
         }
         //commandPanel.setSize(getWidth(),getHeight()/10);
-        ip.setSize(getSize());
-        ip.repaint();
+        //ip.setSize(getSize());
+        //ip.repaint();
         commandPanel.repaint();
+        scorePanel.repaint();
         //firstFieldPanel.setSize(getWidth()/2,getHeight()/2);
         firstFieldPanel.repaint();
         //secondFieldPanel.setSize(getWidth()/2,getHeight()/2);
         secondFieldPanel.repaint();
+        System.out.println(getWidth()+" "+getHeight());
+    }
+
+    public void newGame(){
+        game=new Game();
+
+        this.setSize(1912 ,950);
+        //setResizable(false);
+        gameController=new GraphicGameController(game,this);
+        backgroundImage = new ImageIcon("assets/img/command_panel_background.png").getImage();
+
+        this.addMouseListener(gameController);
+        this.addKeyListener(gameController);
+
+        firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false);
+        secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false);
+
+        commandPanel = new CommandPanel();
+        scorePanel = new ScorePanel();
+        commandPanel.setFocusable(true);
+        commandPanel.setVisible(true);
+        scorePanel.setFocusable(true);
+        scorePanel.setVisible(true);
+
+        add(commandPanel = new CommandPanel(), BorderLayout.NORTH);
+        add(firstFieldPanel=new FieldPanel(game.getPlayer1().getPlayerBattlefield(),false), BorderLayout.WEST);
+        add(secondFieldPanel=new FieldPanel(game.getPlayer2().getPlayerBattlefield(), false), BorderLayout.CENTER);
+        add(scorePanel,BorderLayout.SOUTH);
+
+        this.setFocusable(true);
+        this.setVisible(true);
+
+        repaint();
+    }
+    public void setGame(Game game) {
+        this.game=game;
     }
 }

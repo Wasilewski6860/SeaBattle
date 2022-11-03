@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Should fix human shouting">
-      <change afterPath="$PROJECT_DIR$/src/graphic/ImagePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphic/InfoPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/changeFirstPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/changeFirstPlayer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/changeSecondPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/changeSecondPlayer.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/CommandPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/FieldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/FieldPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/ImagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/ImagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/ScorePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/players/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +47,9 @@
     <setting file="file://$PROJECT_DIR$/src/graphic/Drawable.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/FieldPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/GUI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/GraphicGameController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/ImagePanel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/ScorePanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Battlefield.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Cell.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Coordinate.java" root0="FORCE_HIGHLIGHTING" />
@@ -63,7 +77,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Docs/ComputerGraphic/ORACLE_11G_v11.2.0.2_R2/Task3&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/Игры/SeaBattle-master&quot;
   }
 }</component>
   <component name="RunManager">
@@ -108,7 +122,9 @@
       <workItem from="1667224812683" duration="1157000" />
       <workItem from="1667233854962" duration="3028000" />
       <workItem from="1667294850137" duration="23761000" />
-      <workItem from="1667379078472" duration="3345000" />
+      <workItem from="1667379078472" duration="4439000" />
+      <workItem from="1667402236932" duration="17844000" />
+      <workItem from="1667459897819" duration="11543000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -236,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667380930755</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Should fix human shouting">
+      <created>1667382883817</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667382883817</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,24 +297,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/graphic/GUI.java</url>
-          <line>99</line>
-          <properties class="graphic.GUI" method="repaint">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/graphic/GraphicGameController.java</url>
-          <line>93</line>
-          <properties class="graphic.GraphicGameController" method="mouseClicked">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
