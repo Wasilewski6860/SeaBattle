@@ -21,45 +21,45 @@ public class ControlPanel extends JPanel {
         down=new JLabel(new ImageIcon("assets/buttons/down.png"));
         backgroundImage = new ImageIcon("assets/command_panel_background.png").getImage();
         infoLabel =new InfoPanel();
-        add(up
-               // , BorderLayout.NORTH
-        );
-        add(down
-               // , BorderLayout.SOUTH
-        );
-        add(left
-               // , BorderLayout.WEST
-        );
-        add(right
-               // , BorderLayout.EAST
-        );
-        add(infoLabel);
-//        setLayout(new GridBagLayout());
-//        GridBagConstraints c = new GridBagConstraints();
-//        c.weightx = 1;
-//        c.weighty = 1;
-//        c.fill = GridBagConstraints.VERTICAL;
-//        c.gridx = 1; // Starting the first row
-//        c.gridy=0;
-//        c.gridwidth = 1;
-//        add(up, c);
-//        c.fill = GridBagConstraints.VERTICAL;
-//        c.gridwidth = 1;
-//        c.gridx=0; // Switching to next row
-//        c.gridy=1;
-//        add(left,c);
-//        c.gridwidth = 1;
-//        c.gridx=1; // Switching to next row
-//        c.gridy=1;
-//        add(down,c);
-//        c.gridwidth = 1;
-//        c.gridx=2; // Switching to next row
-//        c.gridy=1;
-//        add(right,c);
-//        c.fill = GridBagConstraints.BOTH;
-//        c.gridwidth = 1;
-//        c.gridx=3; // Switching to next row
-//        add(infoLabel,c);
+//        add(up
+//               // , BorderLayout.NORTH
+//        );
+//        add(down
+//               // , BorderLayout.SOUTH
+//        );
+//        add(left
+//               // , BorderLayout.WEST
+//        );
+//        add(right
+//               // , BorderLayout.EAST
+//        );
+//        add(infoLabel);
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.weightx = 1;
+        c.weighty = 1;
+        c.fill = GridBagConstraints.VERTICAL;
+        c.gridx = 1; // Starting the first row
+        c.gridy=0;
+        c.gridwidth = 1;
+        add(up, c);
+        c.fill = GridBagConstraints.VERTICAL;
+        c.gridwidth = 1;
+        c.gridx=0; // Switching to next row
+        c.gridy=1;
+        add(left,c);
+        c.gridwidth = 1;
+        c.gridx=1; // Switching to next row
+        c.gridy=1;
+        add(down,c);
+        c.gridwidth = 1;
+        c.gridx=2; // Switching to next row
+        c.gridy=1;
+        add(right,c);
+        c.fill = GridBagConstraints.BOTH;
+        c.gridwidth = 1;
+        c.gridx=3; // Switching to next row
+        add(infoLabel,c);
     }
 
     public boolean isBounds(JLabel button,int x,int y){

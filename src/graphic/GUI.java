@@ -1,6 +1,8 @@
 package graphic;
 
 import logic.Game;
+import logic.players.HumanGUIPlayer;
+import logic.players.ai.AIPlayer;
 import logic.players.ai.EasyAI;
 import logic.players.ai.NormalAI;
 
@@ -112,6 +114,11 @@ public class GUI extends JFrame {
     @Override
     public void repaint(long time, int x, int y, int width, int height) {
         super.repaint(time, x, y, width, height);
+
+//        if (game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN){
+//           if (game.getPlayer1() instanceof HumanGUIPlayer) firstFieldPanel.isWarFog=false;
+//        }
+
         if (game.getCurrentTurn()== Game.TURN.FIRST_PLAYER_TURN){
             if (!(game.getPlayer2() instanceof EasyAI) && !(game.getPlayer2() instanceof NormalAI))firstFieldPanel.isWarFog=false;
             //else firstFieldPanel.isWarFog=true;
@@ -121,7 +128,10 @@ public class GUI extends JFrame {
         else {
             if (!(game.getPlayer2() instanceof EasyAI) && !(game.getPlayer2() instanceof NormalAI))firstFieldPanel.isWarFog=true;
             //else firstFieldPanel.isWarFog=false;
-            if (!(game.getPlayer1() instanceof EasyAI) && !(game.getPlayer1() instanceof NormalAI))secondFieldPanel.isWarFog=false;
+            if (!(game.getPlayer1() instanceof EasyAI) && !(game.getPlayer1() instanceof NormalAI) ){
+                secondFieldPanel.isWarFog=false;
+                if (game.getPlayer2() instanceof AIPlayer) secondFieldPanel.isWarFog=true;
+            }
             //else secondFieldPanel.isWarFog=true;
         }
         //commandPanel.setSize(getWidth(),getHeight()/10);
