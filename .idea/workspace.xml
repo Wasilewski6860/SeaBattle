@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SeaBattle:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f7fc6596-79b9-4d1c-8827-9afd7de15b18" name="Changes" comment="Should fix human shouting">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/SeaBattle_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/graphic/panels/InfoPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/ControlPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/ControlPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/battleship/battleship_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/battleship/battleship_bottom.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/battleship/battleship_left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/battleship/battleship_left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/battleship/battleship_right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/battleship/battleship_right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/battleship/battleship_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/battleship/battleship_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/cruiser/cruiser_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/cruiser/cruiser_bottom.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/cruiser/cruiser_left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/cruiser/cruiser_left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/cruiser/cruiser_right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/cruiser/cruiser_right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/cruiser/cruiser_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/cruiser/cruiser_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/battleship/battleship_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/battleship/battleship_bottom.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/battleship/battleship_left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/battleship/battleship_left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/battleship/battleship_right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/battleship/battleship_right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/battleship/battleship_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/battleship/battleship_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/changeFirstPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/changeFirstPlayer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/changeSecondPlayer.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/changeSecondPlayer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/down.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/down.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/buttons/up.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/buttons/up.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/command_panel_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/command_panel_background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/cruiser/cruiser_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cruiser/cruiser_bottom.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/cruiser/cruiser_left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cruiser/cruiser_left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/cruiser/cruiser_right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cruiser/cruiser_right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/cruiser/cruiser_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/cruiser/cruiser_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/destroyer/destroyer_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/destroyer/destroyer_bottom.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/destroyer/destroyer_left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/destroyer/destroyer_left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/destroyer/destroyer_right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/destroyer/destroyer_right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/destroyer/destroyer_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/destroyer/destroyer_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/free.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/free.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/info.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/info.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/shelled.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/shelled.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/shipWrecked.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/shipWrecked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/torpedo/torpedo_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/torpedo/torpedo_bottom.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/torpedo/torpedo_left.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/torpedo/torpedo_left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/torpedo/torpedo_right.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/torpedo/torpedo_right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/torpedo/torpedo_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/torpedo/torpedo_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shipWrecked.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shipWrecked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/CommandPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/panels/CommandPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/ControlPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/panels/ControlPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/DrawUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/FieldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/panels/FieldPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/GraphicGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/ImagePanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/InfoPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,13 +83,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/console/CLI.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/graphic/CommandPanel.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/graphic/ControlPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/DrawUtils.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/Drawable.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/graphic/FieldPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/GUI.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/graphic/GraphicGameController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/panels/CommandPanel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/panels/ControlPanel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/graphic/panels/FieldPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Battlefield.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Cell.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logic/Coordinate.java" root0="FORCE_HIGHLIGHTING" />
@@ -58,15 +111,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Игры/SeaBattle-master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Игры/SeaBattle-master",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -111,7 +167,8 @@
       <workItem from="1667294850137" duration="23761000" />
       <workItem from="1667379078472" duration="4439000" />
       <workItem from="1667402236932" duration="17844000" />
-      <workItem from="1667459897819" duration="21825000" />
+      <workItem from="1667459897819" duration="26461000" />
+      <workItem from="1667545982996" duration="22755000" />
     </task>
     <task id="LOCAL-00001" summary="With Players and changed place of ships">
       <created>1665251064258</created>
@@ -260,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667500601485</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Should fix human shouting">
+      <created>1667506793031</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1667506793031</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

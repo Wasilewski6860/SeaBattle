@@ -7,41 +7,11 @@ import logic.players.ai.AIPlayer;
 import logic.players.ai.EasyAI;
 import logic.players.ai.NormalAI;
 import graphic.GraphicGameController;
+import logic.ship.Ship;
+
+import java.util.List;
 
 public class Game {
-
-
-    public void changeFirstPlayer(GraphicGameController graphicGameController) {
-        System.out.println("You are in changeFirstPlayer method");
-        if (player1 instanceof HumanGUIPlayer) {
-            System.out.println("fp was humangui");
-            player1 = new EasyAI(player1.getPlayerBattlefield(),player1.getEnemyBattlefield());
-            System.out.println("it is easyAi now");
-        }else if (player1 instanceof EasyAI) {
-            System.out.println("fp was easyAi");
-            player1 = new NormalAI(player1.getPlayerBattlefield(),player1.getEnemyBattlefield());
-            System.out.println("it is normalAi now");
-        }
-        else if (player1 instanceof NormalAI) {
-            System.out.println("fp was normalAi");
-            player1 = new HumanGUIPlayer(player1.getPlayerBattlefield(),player1.getEnemyBattlefield(),graphicGameController);
-            System.out.println("it is humangui now");
-        }
-    }
-    public void changeSecondPlayer(GraphicGameController graphicGameController) {
-        System.out.println("You are in changeFirstPlayer method");
-        if (player2 instanceof HumanGUIPlayer) {
-            player2 = new EasyAI(player2.getPlayerBattlefield(),player2.getEnemyBattlefield());
-            System.out.println("it is easyAi now");
-        }else if (player2 instanceof EasyAI) {
-            player2 = new NormalAI(player2.getPlayerBattlefield(),player2.getEnemyBattlefield());
-            System.out.println("it is normalAi now");
-        }
-        else if (player2 instanceof NormalAI) {
-            player2 = new HumanGUIPlayer(player2.getPlayerBattlefield(),player2.getEnemyBattlefield(),graphicGameController);
-            System.out.println("it is humangui now");
-        }
-    }
 
     public enum GAME_STATE{
         PLACING,
@@ -86,6 +56,7 @@ public class Game {
     }
 
     public void nextTurn(){
+
         switch (currentState){
             case PLACING -> {
                 if (currentTurn==TURN.FIRST_PLAYER_TURN){
@@ -122,7 +93,6 @@ public class Game {
             case PLACING -> {
                 if (currentTurn==TURN.FIRST_PLAYER_TURN){
                     if (player1 instanceof AIPlayer){
-                        System.out.println("First player is AI");
                         player1.placeShips();
                         currentTurn=TURN.SECOND_PLAYER_TURN;
                     }
@@ -130,7 +100,7 @@ public class Game {
                 }
                 else {
                     if (player2 instanceof AIPlayer) {
-                        //System.out.println("Second player is AI");
+                        ////System.out.println("Second player is AI");
                         player2.placeShips();
                         currentTurn = TURN.FIRST_PLAYER_TURN;
                         currentState = GAME_STATE.SHOOTING;
@@ -166,6 +136,35 @@ public class Game {
         }
     }
 
+    public void changeFirstPlayer(GraphicGameController graphicGameController) {
+        //System.out.println("You are in changeFirstPlayer method");
+        if (player1 instanceof HumanGUIPlayer) {
+            //System.out.println("fp was humangui");
+            player1 = new EasyAI(player1.getPlayerBattlefield(),player1.getEnemyBattlefield());
+            //System.out.println("it is easyAi now");
+        }else if (player1 instanceof EasyAI) {
+            //System.out.println("fp was easyAi");
+            player1 = new NormalAI(player1.getPlayerBattlefield(),player1.getEnemyBattlefield());
+            //System.out.println("it is normalAi now");
+        }
+        else if (player1 instanceof NormalAI) {
+            //System.out.println("fp was normalAi");
+            player1 = new HumanGUIPlayer(player1.getPlayerBattlefield(),player1.getEnemyBattlefield(),graphicGameController);
+            //System.out.println("it is humangui now");
+        }
+    }
+    public void changeSecondPlayer(GraphicGameController graphicGameController) {
+        if (player2 instanceof HumanGUIPlayer) {
+            player2 = new EasyAI(player2.getPlayerBattlefield(),player2.getEnemyBattlefield());
+        }else if (player2 instanceof EasyAI) {
+            player2 = new NormalAI(player2.getPlayerBattlefield(),player2.getEnemyBattlefield());
+            //System.out.println("it is normalAi now");
+        }
+        else if (player2 instanceof NormalAI) {
+            player2 = new HumanGUIPlayer(player2.getPlayerBattlefield(),player2.getEnemyBattlefield(),graphicGameController);
+            //System.out.println("it is humangui now");
+        }
+    }
 
     public Player getWinner() {
         if (currentState==GAME_STATE.PLACING) return null;
@@ -237,5 +236,41 @@ public class Game {
 
     public void setSecondPlayersVictories(int secondPlayersVictories) {
         this.secondPlayersVictories = secondPlayersVictories;
+    }
+
+    public boolean placeShip(int length, Ship.LocationParams location) {
+        return firstPlayerField.placeShip(length, location);
+    }
+
+    public Cell getCell(int x, int y) {
+        return firstPlayerField.getCell(x, y);
+    }
+
+    public Cell[][] getTable() {
+        return firstPlayerField.getTable();
+    }
+
+    public void setTable(Cell[][] table) {
+        firstPlayerField.setTable(table);
+    }
+
+    public List<Ship> getShips() {
+        return firstPlayerField.getShips();
+    }
+
+    public void setShips(List<Ship> ships) {
+        firstPlayerField.setShips(ships);
+    }
+
+    public boolean isShootable(int x, int y) {
+        return firstPlayerField.isShootable(x, y);
+    }
+
+    public boolean containsShip(int x, int y) {
+        return firstPlayerField.containsShip(x, y);
+    }
+
+    public boolean getShot(Cell cell) {
+        return firstPlayerField.getShot(cell);
     }
 }
