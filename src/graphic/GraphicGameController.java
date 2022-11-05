@@ -23,38 +23,20 @@ public class GraphicGameController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (gui.getCommandPanel().getNewGame().getBounds().contains(e.getX(), e.getY())) {
-            game.newGameParty();
-        }
-        if (gui.getCommandPanel().getChangeFirstPlayer().getBounds().contains(e.getX(), e.getY())) {
-            game.changeFirstPlayer(this);
-        }
-        if (gui.getCommandPanel().getChangeSecondPlayer().getBounds().contains(e.getX(), e.getY())) {
-            game.changeSecondPlayer(this);
-        }
-        if (gui.getControlPanel().isBounds(gui.getControlPanel().getUp(), e.getX(), e.getY())) {
-            selectedDir = ShipConstants.DIRECTION.TOP;
-        }
-        if (gui.getControlPanel().isBounds(gui.getControlPanel().getDown(), e.getX(), e.getY())) {
-            selectedDir = ShipConstants.DIRECTION.BOTTOM;
-        }
-        if (gui.getControlPanel().isBounds(gui.getControlPanel().getLeft(), e.getX(), e.getY())) {
-            selectedDir = ShipConstants.DIRECTION.LEFT;
-        }
-        if (gui.getControlPanel().isBounds(gui.getControlPanel().getRight(), e.getX(), e.getY())) {
-            selectedDir = ShipConstants.DIRECTION.RIGHT;
-        }
         selectedX = e.getX();
         selectedY = e.getY();
+
         if (gui.isFirstFieldBounds(selectedX, selectedY)) {
             selectedX = (selectedX - gui.getFirstFieldPanel().getX()) / gui.getFirstFieldPanel().getCellWidth();
             selectedY = (selectedY - gui.getFirstFieldPanel().getY()) / gui.getFirstFieldPanel().getCellHeight();
             game.turn();
-        } else if (gui.isSecondFieldBounds(selectedX, selectedY)) {
+        }
+        else if (gui.isSecondFieldBounds(selectedX, selectedY)) {
             selectedX = (selectedX - gui.getSecondFieldPanel().getX()) / gui.getSecondFieldPanel().getCellWidth();
             selectedY = (selectedY - gui.getSecondFieldPanel().getY()) / gui.getSecondFieldPanel().getCellHeight();
             game.turn();
         }
+
         gui.getControlPanel().getInfoLabel().update(game, this);
         gui.repaint();
     }
@@ -89,4 +71,23 @@ public class GraphicGameController implements MouseListener {
         return selectedDir;
     }
 
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
+
+    public void setSelectedX(int selectedX) {
+        this.selectedX = selectedX;
+    }
+
+    public void setSelectedY(int selectedY) {
+        this.selectedY = selectedY;
+    }
+
+    public void setSelectedDir(ShipConstants.DIRECTION selectedDir) {
+        this.selectedDir = selectedDir;
+    }
 }

@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUI extends JFrame {
-    public Game game;
+     public Game game;
     private GraphicGameController gameController;
 
     private FieldPanel firstFieldPanel;
@@ -23,23 +23,21 @@ public class GUI extends JFrame {
         this.game = game;
         setIconImage(DrawUtils.loadImage("assets/img/icon.png"));
         this.setSize(1779, 936);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         //setResizable(false);
         gameController = new GraphicGameController(game, this);
 
         this.addMouseListener(gameController);
 
-        firstFieldPanel = new FieldPanel(game.getFirstPlayerField(), false);
-        secondFieldPanel = new FieldPanel(game.getSecondPlayerField(), false);
-
-        commandPanel = new CommandPanel();
-        controlPanel = new ControlPanel();
+        commandPanel = new CommandPanel(gameController);
+        controlPanel = new ControlPanel(gameController);
 
         commandPanel.setFocusable(true);
         commandPanel.setVisible(true);
         controlPanel.setFocusable(true);
         controlPanel.setVisible(true);
 
-        add(commandPanel = new CommandPanel(), BorderLayout.NORTH);
+        add(commandPanel = new CommandPanel(gameController), BorderLayout.NORTH);
         add(firstFieldPanel = new FieldPanel(game.getFirstPlayerField(), false), BorderLayout.WEST);
         add(secondFieldPanel = new FieldPanel(game.getSecondPlayerField(), false), BorderLayout.CENTER);
         add(controlPanel, BorderLayout.SOUTH);
@@ -83,6 +81,7 @@ public class GUI extends JFrame {
     }
 
     public void recalcVisible(){
+        game=gameController.game;
         if (game.getPlayer1() instanceof HumanGUIPlayer && game.getPlayer2() instanceof HumanGUIPlayer) {
             if (game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN) {
                 firstFieldPanel.isWarFog = false;

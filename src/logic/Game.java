@@ -164,6 +164,7 @@ public class Game {
             player2 = new HumanGUIPlayer(player2.getPlayerBattlefield(),player2.getEnemyBattlefield(),graphicGameController);
             //System.out.println("it is humangui now");
         }
+        //graphicGameController.game=this;
     }
 
     public Player getWinner() {

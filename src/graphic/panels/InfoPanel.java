@@ -66,7 +66,6 @@ public class InfoPanel extends JPanel {
         add(firstPlayerVictoriesInfo, c);
         c.gridy++; // Switching to next row
         add(secondPlayerVictoriesInfo, c);
-
     }
 
     public void update(Game game, GraphicGameController controller) {

@@ -1,11 +1,16 @@
 package graphic.panels;
 
+import graphic.GraphicGameController;
+import logic.ship.ShipConstants;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ControlPanel extends JPanel {
 
-
+    GraphicGameController controller;
     private final Image backgroundImage;
     private JLabel up;
     private  JLabel right;
@@ -14,11 +19,53 @@ public class ControlPanel extends JPanel {
     private InfoPanel infoLabel;
 
 
-    public ControlPanel() {
+    public ControlPanel(GraphicGameController controller) {
+        this.controller=controller;
         up = new JLabel(new ImageIcon("assets/img/buttons/up.png"));
+        up.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isBounds(up, e.getX(), e.getY())) {
+                    controller.setSelectedDir(ShipConstants.DIRECTION.TOP);
+                }
+            }
+        });
+
         right = new JLabel(new ImageIcon("assets/img/buttons/right.png"));
+        right.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isBounds(right, e.getX(), e.getY())) {
+                    controller.setSelectedDir(ShipConstants.DIRECTION.RIGHT);
+                }
+            }
+        });
         left = new JLabel(new ImageIcon("assets/img/buttons/left.png"));
+        left.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isBounds(left, e.getX(), e.getY())) {
+                    System.out.println("LEFT");
+                    controller.setSelectedDir(ShipConstants.DIRECTION.LEFT);
+                }
+            }
+        });
         down = new JLabel(new ImageIcon("assets/img/buttons/down.png"));
+        down.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isBounds(down, e.getX(), e.getY())) {
+                    controller.setSelectedDir(ShipConstants.DIRECTION.BOTTOM);
+                }
+            }
+        });
+
+        up.setFocusable(true);
+        right.setFocusable(true);
+        left.setFocusable(true);
+        down.setFocusable(true);
+        setFocusable(true);
+
         backgroundImage = new ImageIcon("assets/img/control_panel_background.png").getImage();
         infoLabel = new InfoPanel();
 //        add(up
