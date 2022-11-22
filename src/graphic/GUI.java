@@ -11,23 +11,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUI extends JFrame {
-     public Game game;
+    public Game game;
     private GraphicGameController gameController;
-
     private FieldPanel firstFieldPanel;
     private FieldPanel secondFieldPanel;
     private CommandPanel commandPanel;
     private ControlPanel controlPanel;
-
     public GUI(Game game) throws HeadlessException {
         this.game = game;
         setIconImage(DrawUtils.loadImage("assets/img/icon.png"));
         this.setSize(1779, 936);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         //setResizable(false);
-        gameController = new GraphicGameController(game, this);
+        gameController = new GraphicGameController( this);
 
         this.addMouseListener(gameController);
+
+        firstFieldPanel = new FieldPanel(game.getFirstPlayerField(), false);
+        secondFieldPanel = new FieldPanel(game.getSecondPlayerField(), false);
 
         commandPanel = new CommandPanel(gameController);
         controlPanel = new ControlPanel(gameController);
@@ -81,7 +81,6 @@ public class GUI extends JFrame {
     }
 
     public void recalcVisible(){
-        game=gameController.game;
         if (game.getPlayer1() instanceof HumanGUIPlayer && game.getPlayer2() instanceof HumanGUIPlayer) {
             if (game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN) {
                 firstFieldPanel.isWarFog = false;
@@ -120,5 +119,9 @@ public class GUI extends JFrame {
         }
         firstFieldPanel.setBattlefield(game.getFirstPlayerField());
         secondFieldPanel.setBattlefield(game.getSecondPlayerField());
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

@@ -14,6 +14,7 @@ import java.util.Queue;
 import java.util.Random;
 
 import logic.ship.Ship;
+import logic.ship.ShipConstants;
 import logic.ship.ShipConstants.DIRECTION;
 
 public abstract class AIPlayer extends Player {
@@ -30,6 +31,12 @@ public abstract class AIPlayer extends Player {
         preyBody = new LinkedList<>();
         shelledCells=new LinkedList<>();
         provider = new AITurnProvider(this);
+    }
+
+    @Override
+    public boolean placeShip() {
+        placeShips();
+        return true;
     }
 
     protected boolean randomShoot() {
@@ -65,6 +72,12 @@ public abstract class AIPlayer extends Player {
 
         }
         return false;
+    }
+    public void placeShips() {
+        placeShipsOfCertainType(ShipConstants.BATTLESHIP_LENGTH, Battlefield.BATTLE_SHIPS_COUNT);
+        placeShipsOfCertainType(ShipConstants.CRUISER_LENGTH, Battlefield.CRUISERS_COUNT);
+        placeShipsOfCertainType(ShipConstants.DESTROYER_LENGTH, Battlefield.DESTROYERS_COUNT);
+        placeShipsOfCertainType(ShipConstants.TORPEDO_BOAT_LENGTH, Battlefield.TORPEDO_BOATS_COUNT);
     }
 
 }

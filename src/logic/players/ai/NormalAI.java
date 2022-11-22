@@ -1,10 +1,7 @@
 package logic.players.ai;
 
 import logic.Battlefield;
-import logic.TurnProviders.AITurnProvider;
 import logic.TurnProviders.NormalAITurnProvider;
-import logic.TurnProviders.TurnProvider;
-import logic.players.Player;
 
 public class NormalAI extends AIPlayer {
 
@@ -13,9 +10,7 @@ public class NormalAI extends AIPlayer {
         provider = new NormalAITurnProvider(this);
     }
 
-    @Override
-    public boolean shoot() {
-
+    public boolean smartShoot(){
         if (isHunting) {
 
             boolean isShooted = false;
@@ -35,5 +30,11 @@ public class NormalAI extends AIPlayer {
             return isShooted;
         }
         else return super.randomShoot();
+    }
+    @Override
+    public boolean shoot() {
+        //boolean t = randomShoot();
+        while (smartShoot());
+        return false;
     }
 }

@@ -2,6 +2,8 @@ package logic.players;
 
 import logic.Battlefield;
 import logic.TurnProviders.TurnProvider;
+import logic.players.ai.AIPlayer;
+import logic.players.ai.EasyAI;
 import logic.ship.Ship;
 import logic.ship.ShipConstants;
 
@@ -26,13 +28,6 @@ public abstract class Player {
         return playerBattlefield.placeShip(length, location);
     }
 
-    public void placeShips() {
-
-        placeShipsOfCertainType(ShipConstants.BATTLESHIP_LENGTH, Battlefield.BATTLE_SHIPS_COUNT);
-        placeShipsOfCertainType(ShipConstants.CRUISER_LENGTH, Battlefield.CRUISERS_COUNT);
-        placeShipsOfCertainType(ShipConstants.DESTROYER_LENGTH, Battlefield.DESTROYERS_COUNT);
-        placeShipsOfCertainType(ShipConstants.TORPEDO_BOAT_LENGTH, Battlefield.TORPEDO_BOATS_COUNT);
-    }
 
     public abstract boolean shoot();
     public boolean placeShip(){
@@ -71,6 +66,11 @@ public abstract class Player {
 
     public void setProvider(TurnProvider provider) {
         this.provider = provider;
+    }
+    @Override
+    public String toString() {
+        return ((this instanceof AIPlayer)
+                ? ((this instanceof EasyAI) ? "Easy AI" : "Norman AI") : "Human Player");
     }
 }
 
