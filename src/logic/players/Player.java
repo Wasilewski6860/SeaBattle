@@ -1,76 +1,76 @@
 package logic.players;
 
 import logic.Battlefield;
-import logic.Ship;
-
-import java.util.Random;
-import java.util.Scanner;
+import logic.TurnProviders.TurnProvider;
+import logic.players.ai.AIPlayer;
+import logic.players.ai.EasyAI;
+import logic.ship.Ship;
+import logic.ship.ShipConstants;
 
 public abstract class Player {
-  public Battlefield playerBattlefield;
-  public  Battlefield enemyBattlefield;
+    private Battlefield playerBattlefield;
+    private Battlefield enemyBattlefield;
+    public TurnProvider provider;
 
     public Player(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
         this.playerBattlefield = playerBattlefield;
         this.enemyBattlefield = enemyBattlefield;
     }
 
-    /*
-
-                protected static void placeShips(Battlefield battlefield) {
-                    placeShip(battlefield, Ship.TYPE_OF_SHIP.BATTLESHIP,Battlefield.BATTLE_SHIPS_COUNT);
-                    placeShip(battlefield, Ship.TYPE_OF_SHIP.CRUISER,Battlefield.CRUISERS_COUNT);
-                    placeShip(battlefield, Ship.TYPE_OF_SHIP.DESTROYER,Battlefield.DESTROYERS_COUNT);
-                    placeShip(battlefield, Ship.TYPE_OF_SHIP.TORPEDO_BOAT,Battlefield.TORPEDO_BOATS_COUNT);
-                }
-
-                private static void placeShip(Battlefield battlefield,Ship.TYPE_OF_SHIP type, int count){
-                    System.out.println("Place "+type);
-                    for (int i = 0; i < Battlefield.CRUISERS_COUNT; i++) {
-                        while (!placeShip(battlefield, Ship.TYPE_OF_SHIP.CRUISER)) {
-                            placeShip(battlefield, Ship.TYPE_OF_SHIP.CRUISER);
-                        }
-                    }
-                    printScreen();
-                }
-
-                protected static boolean placeShip(Battlefield battlefield, Ship.TYPE_OF_SHIP type) {
-
-                    Scanner in = new Scanner(System.in);
-                    System.out.println("Enter direction:");
-                    String strDirection = in.nextLine();
-                    System.out.println("Your dir is " + strDirection);
-
-                    System.out.println("Enter coordinates x,y:");
-                    int x = in.nextInt();
-                    int y = in.nextInt();
-                    System.out.println(type + " coordinates is " + x + " " + y);
-
-
-                    Ship.DIRECTION dir = switch (strDirection) {
-                        case "left" -> Ship.DIRECTION.LEFT;
-                        case "top" -> Ship.DIRECTION.TOP;
-                        case "bottom" -> Ship.DIRECTION.BOTTOM;
-                        default -> Ship.DIRECTION.RIGHT;
-                    };
-
-                    return battlefield.placeShip(type, dir, battlefield.getCell(x, y));
-                }
-
-
-                */
-    public abstract void placeShip(Ship.TYPE_OF_SHIP type, int count);
-
-    public  boolean placeShip(int x, int y, Ship.TYPE_OF_SHIP type, Ship.DIRECTION direction) {
-        return playerBattlefield.placeShip(type,direction,playerBattlefield.getCell(x,y));
+    public void placeShipsOfCertainType(int length, int count) {
+        int iteration = 0;
+        while (iteration < count) {
+            if (placeShip(provider.locationParams(), length)) iteration++;
+        }
     }
 
-    public void placeShips() {
-        placeShip( Ship.TYPE_OF_SHIP.BATTLESHIP,Battlefield.BATTLE_SHIPS_COUNT);
-        placeShip( Ship.TYPE_OF_SHIP.CRUISER,Battlefield.CRUISERS_COUNT);
-     //   placeShip( Ship.TYPE_OF_SHIP.DESTROYER,Battlefield.DESTROYERS_COUNT);
-      //  placeShip( Ship.TYPE_OF_SHIP.TORPEDO_BOAT,Battlefield.TORPEDO_BOATS_COUNT);
+    public boolean placeShip(Ship.LocationParams location, int length) {
+        return playerBattlefield.placeShip(length, location);
     }
+
 
     public abstract boolean shoot();
+    public boolean placeShip(){
+        switch (this.getPlayerBattlefield().getShips().size()){
+            case 0->{
+                this.placeShip(this.provider.locationParams(), ShipConstants.BATTLESHIP_LENGTH);
+                return false;
+            }
+            case 1, 2 ->{
+                this.placeShip(this.provider.locationParams(), ShipConstants.CRUISER_LENGTH);
+                return false;
+            }
+            case 3, 4, 5 ->{
+                this.placeShip(this.provider.locationParams(), ShipConstants.DESTROYER_LENGTH);
+                return false;
+            }
+            case 6, 7, 8, 9 ->{
+                this.placeShip(this.provider.locationParams(), ShipConstants.TORPEDO_BOAT_LENGTH);
+                return false;
+            }
+            default -> {return true;}
+        }
+    }
+
+    public boolean isWinner() {
+        return enemyBattlefield.getShips().size() == 0;
+    }
+
+    public Battlefield getPlayerBattlefield() {
+        return playerBattlefield;
+    }
+
+    public Battlefield getEnemyBattlefield() {
+        return enemyBattlefield;
+    }
+
+    public void setProvider(TurnProvider provider) {
+        this.provider = provider;
+    }
+    @Override
+    public String toString() {
+        return ((this instanceof AIPlayer)
+                ? ((this instanceof EasyAI) ? "Easy AI" : "Norman AI") : "Human Player");
+    }
 }
+

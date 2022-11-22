@@ -2,90 +2,82 @@ package logic.players.ai;
 
 import logic.Battlefield;
 import logic.Cell;
-import logic.Ship;
-import logic.ai.AI;
+
+import logic.Coordinate;
+import logic.TurnProviders.AITurnProvider;
+import logic.TurnProviders.HumanTurnProvider;
+import logic.TurnProviders.TurnProvider;
 import logic.players.Player;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
+import logic.ship.Ship;
+import logic.ship.ShipConstants;
+import logic.ship.ShipConstants.DIRECTION;
+
 public abstract class AIPlayer extends Player {
 
     protected Cell target;
     protected Queue<Cell> preyBody;
+    protected Queue<Cell> shelledCells;
     protected boolean isHunting;
 
     public AIPlayer(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
         super(playerBattlefield, enemyBattlefield);
-
         target = null;
         isHunting = false;
         preyBody = new LinkedList<>();
+        shelledCells=new LinkedList<>();
+        provider = new AITurnProvider(this);
     }
 
     @Override
-    public  void placeShip(Ship.TYPE_OF_SHIP type, int count) {
-        int iteration = 0;
-        Random rnd = new Random();
-
-        while (iteration < count) {
-            int x = rnd.nextInt(10);
-            int y = rnd.nextInt(10);
-            Ship.DIRECTION dir = Ship.DIRECTION.TOP;
-            int dirIntRnd = rnd.nextInt(3);
-
-            if (dirIntRnd == 0) dir = Ship.DIRECTION.TOP;
-            else if (dirIntRnd == 1) dir = Ship.DIRECTION.BOTTOM;
-            else if (dirIntRnd == 2) dir = Ship.DIRECTION.RIGHT;
-            else if (dirIntRnd == 3) dir = Ship.DIRECTION.LEFT;
-
-            if (placeShip(x,y,type,dir)) iteration++;
-        }
+    public boolean placeShip() {
+        placeShips();
+        return true;
     }
+
     protected boolean randomShoot() {
 
-        Random rnd = new Random();
-        int x = rnd.nextInt(10);
-        int y = rnd.nextInt(10);
-
-        Cell[][] cells = playerBattlefield.getTable();
-        Cell cell = cells[y][x];
-
-        while (cell.getType() == Cell.typeOfCell.SHELLED || cell.getType() == Cell.typeOfCell.SHIP_WRECKED) {
-            x = rnd.nextInt(10);
-            y = rnd.nextInt(10);
-            cell = cells[y][x];
-        }
-
-        if (cell.getType() == Cell.typeOfCell.SHIP) {
-            preyBody.add(cell);
+        Coordinate coordinate = provider.coordinateOfShoot();
+        if (getEnemyBattlefield().containsShip( coordinate.getX(), coordinate.getY())) {
+            preyBody.add(getEnemyBattlefield().getCell(coordinate.getX(), coordinate.getY()));
             target = preyBody.element();
             isHunting = true;
-            System.out.println("An idiot detected a ship!");
         }
-        return playerBattlefield.getShot(playerBattlefield.getCell(x, y));
+        shelledCells.add(getEnemyBattlefield().getCell(coordinate.getX(), coordinate.getY()));
+        return getEnemyBattlefield().getShot(getEnemyBattlefield().getCell(coordinate.getX(), coordinate.getY()));
     }
 
     protected boolean simpleShoot(int deltaX, int deltaY) {
         Cell tempCell;
-        if (target.getX() + deltaX >= 0 && target.getX() + deltaX <= playerBattlefield.getTable().length - 1
-                && target.getY() + deltaY >= 0 && target.getY() + deltaY <= playerBattlefield.getTable().length - 1
+        int currentX = target.getX() + deltaX;
+        int currentY = target.getY() + deltaY;
+        if (currentX >= 0 && currentX <= getEnemyBattlefield().getTable().length - 1
+                && currentY >= 0 && currentY <= getEnemyBattlefield().getTable().length - 1
                 //     && table.getCell(mostWanted.getX()+deltaX,mostWanted.getY()+deltaY).blast()
-                && (playerBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY).getType() != Cell.typeOfCell.SHELLED
-                && playerBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY).getType() != Cell.typeOfCell.SHIP_WRECKED)
+                && !shelledCells.contains( getEnemyBattlefield().getCell( currentX,currentY))
         ) {
 
-            tempCell = playerBattlefield.getCell(target.getX() + deltaX, target.getY() + deltaY);
-            if (tempCell.getType() == Cell.typeOfCell.SHIP) {
+            tempCell = getEnemyBattlefield().getCell(currentX, currentY);
+            if (getEnemyBattlefield().containsShip(tempCell.getX(),tempCell.getY())) {
                 preyBody.add(tempCell);
                 target = preyBody.element();
             }
-            playerBattlefield.getShot(tempCell);
+            shelledCells.add(tempCell);
+            getEnemyBattlefield().getShot(tempCell);
             return true;
 
         }
         return false;
+    }
+    public void placeShips() {
+        placeShipsOfCertainType(ShipConstants.BATTLESHIP_LENGTH, Battlefield.BATTLE_SHIPS_COUNT);
+        placeShipsOfCertainType(ShipConstants.CRUISER_LENGTH, Battlefield.CRUISERS_COUNT);
+        placeShipsOfCertainType(ShipConstants.DESTROYER_LENGTH, Battlefield.DESTROYERS_COUNT);
+        placeShipsOfCertainType(ShipConstants.TORPEDO_BOAT_LENGTH, Battlefield.TORPEDO_BOATS_COUNT);
     }
 
 }

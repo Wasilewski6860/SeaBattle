@@ -3,14 +3,16 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import static logic.Ship.TYPE_OF_SHIP;
-import static logic.Ship.DIRECTION;
+
+import logic.ship.BorderPlacer;
+import logic.ship.Ship;
+import logic.ship.ShipChecker;
 
 public class Battlefield {
 
     private Cell[][] table;
     private List<Ship> ships;
-    private final borderPlacer borderPlacer;
+    private final BorderPlacer borderPlacer;
     private final ShipChecker shipChecker;
 
     public static final int BATTLE_SHIPS_COUNT = 1;
@@ -24,8 +26,8 @@ public class Battlefield {
     public Battlefield() {
 
         this.table = new Cell[TABLE_HEIGHT][TABLE_WIDTH];
-        this.borderPlacer = new borderPlacer(this);
-        this.shipChecker = new ShipChecker(this);
+        this.borderPlacer = new BorderPlacer(this);
+        this.shipChecker = new ShipChecker();
 
         for (int i = 0; i < table.length; i++)
             for (int j = 0; j < table[i].length; j++)
@@ -34,10 +36,11 @@ public class Battlefield {
         this.ships = new ArrayList<>();
     }
 
-    public boolean placeShip(final TYPE_OF_SHIP type, final DIRECTION dir, final Cell startCell) {
+    public boolean placeShip(int length, Ship.LocationParams location) {
 
-        if (shipChecker.check(type, dir, startCell)) {
-            Ship ship = new Ship(type, dir, startCell, this);
+
+        if (shipChecker.check(location, length, this)) {
+            Ship ship = new Ship(location, this, length);
             ships.add(ship);
             borderPlacer.setBorders(ship);
             return true;
@@ -65,20 +68,28 @@ public class Battlefield {
         this.ships = ships;
     }
 
+    public boolean isShootable(int x, int y) {
+        Cell cell = getCell(x, y);
+        return cell.getType() != Cell.typeOfCell.SHELLED && cell.getType() != Cell.typeOfCell.SHIP_WRECKED;
+    }
+
+    public boolean containsShip(int x, int y) {
+        Cell cell = getCell(x, y);
+        return cell.getType() == Cell.typeOfCell.SHIP;
+    }
+
     public boolean getShot(Cell cell) {
         //    List<Ship> tempShip = ships;
         Ship ship = cell.getShip();
-       // boolean isSuccessful = false;
+        // boolean isSuccessful = false;
 
         if (ship != null) {
             // System.out.println("Table ship shot");
-         //   isSuccessful = true;
-            ship.getWound(cell);
-            if (ship.getHp() == 0) {
+            //   isSuccessful = true;
+            int currentShipHp = ship.getWound(cell);
+            if (currentShipHp == 0) {
                 //  System.out.println("Table ship died");
-                for (Cell borderCell : ship.getBorders()) {
-                    borderCell.setType(Cell.typeOfCell.SHELLED);
-                }
+                borderPlacer.resetBorders(ship);
                 ships.remove(ship);
             }
             return true;

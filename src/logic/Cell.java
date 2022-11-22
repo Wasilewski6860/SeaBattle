@@ -1,8 +1,17 @@
 package logic;
 
-public class Cell {
+import graphic.DrawUtils;
+import graphic.Drawable;
 
+import java.awt.*;
+import logic.ship.Ship;
 
+public class Cell implements Drawable  {
+
+    @Override
+    public void draw(Graphics2D g2d,int width,int height, boolean isWarFog) {
+        DrawUtils.drawCell( g2d,   this,width,height, isWarFog);
+    }
     public enum typeOfCell {
         SHELLED,
         SHIP_WRECKED,
@@ -13,7 +22,7 @@ public class Cell {
 
     private Ship ship;
 
-    private final int x, y;
+    private final int x,y;
     private typeOfCell type;
 
     public Cell(int x, int y) {
@@ -23,10 +32,9 @@ public class Cell {
         ship = null;
     }
 
-
     //Return true when cell is ship
     //Another variant is to return true
-    protected boolean blast() {
+    public boolean blast() {
 
         switch (type) {
             case FREE, SHIP_ZONE -> {
@@ -69,4 +77,6 @@ public class Cell {
     public void setType(typeOfCell type) {
         this.type = type;
     }
+
+
 }
