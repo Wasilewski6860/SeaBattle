@@ -74,6 +74,7 @@ public class GraphicGameController implements MouseListener {
 
     public void newGameParty() {
         game.newGameParty();
+        gui.newGame();
     }
 
     public Player getPlayer1() {
@@ -114,7 +115,7 @@ public class GraphicGameController implements MouseListener {
     }
 
     public void refresh() {
-        gui.getControlPanel().getInfoLabel().repaint();
+//        gui.getControlPanel().getInfoLabel().repaint();
         gui.repaint();
     }
 }
