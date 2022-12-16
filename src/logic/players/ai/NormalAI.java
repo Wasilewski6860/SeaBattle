@@ -17,10 +17,10 @@ public class NormalAI extends AIPlayer {
 
             boolean isShooted = false;
 
-            if (!isShooted) isShooted = simpleShoot(-1, 0);
-            if (!isShooted) isShooted = simpleShoot(0, 1);
-            if (!isShooted) isShooted = simpleShoot(1, 0);
-            if (!isShooted) isShooted = simpleShoot(0, -1);
+            if (isShooted) isShooted = simpleShoot(-1, 0);
+           else if (!checkForSimpleShoot(0, 1)) isShooted = simpleShoot(0, 1);
+            else if (!checkForSimpleShoot(1, 0)) isShooted = simpleShoot(1, 0);
+            else if (!checkForSimpleShoot(0, -1)) isShooted = simpleShoot(0, -1);
 
             if (!isShooted){
                 preyBody.remove();
@@ -36,7 +36,6 @@ public class NormalAI extends AIPlayer {
     @Override
     public boolean shoot() {
         //boolean t = randomShoot();
-        while (smartShoot());
-        return false;
+        return smartShoot();
     }
 }

@@ -13,7 +13,8 @@ public class EasyAI extends AIPlayer{
 
     @Override
     public boolean shoot() {
-        while (randomShoot());
-        return false;
+        return randomShoot();
     }
+
+
 }

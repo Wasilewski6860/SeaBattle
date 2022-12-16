@@ -33,11 +33,7 @@ public abstract class AIPlayer extends Player {
         provider = new AITurnProvider(this);
     }
 
-    @Override
-    public boolean placeShip() {
-        placeShips();
-        return true;
-    }
+
 
     protected boolean randomShoot() {
 
@@ -72,6 +68,20 @@ public abstract class AIPlayer extends Player {
 
         }
         return false;
+    }
+    protected boolean checkForSimpleShoot(int deltaX, int deltaY) {
+        Cell tempCell;
+        int currentX = target.getX() + deltaX;
+        int currentY = target.getY() + deltaY;
+        if (currentX >= 0 && currentX <= getEnemyBattlefield().getTable().length - 1
+                && currentY >= 0 && currentY <= getEnemyBattlefield().getTable().length - 1
+                //     && table.getCell(mostWanted.getX()+deltaX,mostWanted.getY()+deltaY).blast()
+                && !shelledCells.contains( getEnemyBattlefield().getCell( currentX,currentY))
+        ) {
+            return false;
+
+        }
+        return true;
     }
     public void placeShips() {
         placeShipsOfCertainType(ShipConstants.BATTLESHIP_LENGTH, Battlefield.BATTLE_SHIPS_COUNT);
