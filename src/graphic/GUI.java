@@ -17,12 +17,13 @@ public class GUI extends JFrame {
     private FieldPanel secondFieldPanel;
     private CommandPanel commandPanel;
     private ControlPanel controlPanel;
+
     public GUI(Game game) throws HeadlessException {
         this.game = game;
         setIconImage(DrawUtils.loadImage("assets/img/icon.png"));
         this.setSize(1779, 936);
         //setResizable(false);
-        gameController = new GraphicGameController( this);
+        gameController = new GraphicGameController(this);
 
         this.addMouseListener(gameController);
 
@@ -58,10 +59,10 @@ public class GUI extends JFrame {
     public void repaint(long time, int x, int y, int width, int height) {
         super.repaint(time, x, y, width, height);
         recalcVisible();
-        commandPanel.repaint();
-        controlPanel.repaint();
-        firstFieldPanel.repaint();
-        secondFieldPanel.repaint();
+//        commandPanel.repaint();
+//        controlPanel.repaint();
+//        firstFieldPanel.repaint();
+//        secondFieldPanel.repaint();
     }
 
     public FieldPanel getFirstFieldPanel() {
@@ -80,43 +81,48 @@ public class GUI extends JFrame {
         return controlPanel;
     }
 
-    public void recalcVisible(){
-        if (game.getPlayer1() instanceof HumanGUIPlayer && game.getPlayer2() instanceof HumanGUIPlayer) {
-            if (game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN) {
+    public void recalcVisible() {
+        boolean player1isHuman = game.getPlayer1() instanceof HumanGUIPlayer;
+        boolean player2isHuman = game.getPlayer2() instanceof HumanGUIPlayer;
+        boolean isPlayer1Turn = game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN;
+
+//        gameController.getWarFog();
+
+//        if (player1isHuman && isPlayer1Turn) {
+//            firstFieldPanel.isWarFog = false;
+//            secondFieldPanel.isWarFog = true;
+//        } else if (player2isHuman && !isPlayer1Turn) {
+//            firstFieldPanel.isWarFog = true;
+//            secondFieldPanel.isWarFog = false;
+//        }
+
+        if (player1isHuman && player2isHuman) {
+            if (isPlayer1Turn) {
+                firstFieldPanel.isWarFog = false; //*
+                secondFieldPanel.isWarFog = true;//*
+            } else {
+                firstFieldPanel.isWarFog = true;//*
+                secondFieldPanel.isWarFog = false;//*
+            }
+        }
+
+        if (player1isHuman && !player2isHuman) {
                 firstFieldPanel.isWarFog = false;
                 secondFieldPanel.isWarFog = true;
-            } else {
-                firstFieldPanel.isWarFog = true;
-                secondFieldPanel.isWarFog = false;
-            }
         }
-        if (game.getPlayer1() instanceof HumanGUIPlayer && game.getPlayer2() instanceof AIPlayer) {
-            if (game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN) {
-                firstFieldPanel.isWarFog = false;
-                secondFieldPanel.isWarFog = true;
-            } else {
-                firstFieldPanel.isWarFog = false;
-                secondFieldPanel.isWarFog = true;
-            }
+
+        if (!player1isHuman && player2isHuman) {
+                firstFieldPanel.isWarFog = true;//*
+                secondFieldPanel.isWarFog = false;//*
         }
-        if (game.getPlayer1() instanceof AIPlayer && game.getPlayer2() instanceof HumanGUIPlayer) {
-            if (game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN) {
-                firstFieldPanel.isWarFog = true;
-                secondFieldPanel.isWarFog = false;
-            } else {
-                firstFieldPanel.isWarFog = true;
-                secondFieldPanel.isWarFog = false;
-            }
+
+        if (!player1isHuman && !player2isHuman) {
+            firstFieldPanel.isWarFog = false;
+            secondFieldPanel.isWarFog = false;
         }
-        if (game.getPlayer1() instanceof AIPlayer && game.getPlayer2() instanceof AIPlayer) {
-            if (game.getCurrentTurn() == Game.TURN.FIRST_PLAYER_TURN) {
-                firstFieldPanel.isWarFog = false;
-                secondFieldPanel.isWarFog = false;
-            } else {
-                firstFieldPanel.isWarFog = false;
-                secondFieldPanel.isWarFog = false;
-            }
-        }
+    }
+
+    public void newGame() {
         firstFieldPanel.setBattlefield(game.getFirstPlayerField());
         secondFieldPanel.setBattlefield(game.getSecondPlayerField());
     }

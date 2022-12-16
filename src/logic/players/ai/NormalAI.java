@@ -3,6 +3,8 @@ package logic.players.ai;
 import logic.Battlefield;
 import logic.TurnProviders.NormalAITurnProvider;
 
+import java.awt.geom.Point2D;
+
 public class NormalAI extends AIPlayer {
 
     public NormalAI(Battlefield playerBattlefield, Battlefield enemyBattlefield) {
